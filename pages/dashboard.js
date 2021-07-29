@@ -1,4 +1,5 @@
-import Hero from 'components/landing/hero'
+import Balance from 'components/dashboard/balance'
+// import Chart from '@/components/dashboard/chart'
 
 import HeadWebsite from 'components/global/head'
 import Navbar from 'components/global/navbar'
@@ -19,16 +20,10 @@ export default function Home() {
         </nav>
 
         <main className="mb-auto dark:bg-gray-800">
-          <section className="h-screen flex">
-            <Hero />
-          </section>
+          <section>
+            <Balance />
 
-          <section className="h-screen flex">
-            <h1>Test</h1>
-          </section>
-
-          <section className="h-screen flex">
-            <h1>Test</h1>
+            {/* <Chart /> */}
           </section>
         </main>
 

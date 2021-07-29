@@ -1,16 +1,69 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap");
+
+* {
+  font-family: "Noto Sans JP", serif;
 }
 
 a {
-  color: inherit;
+  color: #f3f4f6;
   text-decoration: none;
 }
 
-* {
-  box-sizing: border-box;
+a:hover {
+  color: #d79846;
+}
+
+p {
+  color: #f3f4f6;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #f3f4f6;
+}
+
+h1 {
+  font-size: 3rem;
+  line-height: 1rem;
+  font: bold;
+}
+
+h2 {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  font: bold;
+}
+
+h3 {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font: bold;
+}
+
+h4 {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font: bold;
+}
+
+h5 {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font: bold;
+}
+
+h6 {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font: bold;
 }
