@@ -3,7 +3,7 @@ import Link from 'next/link'
 const Navbar = () => {
   return (
 
-  <div className="w-min-screen p-4 flex flex-wrap items-center md:flex-no-wrap bg-black">
+  <div className="w-full p-4 flex flex-wrap items-center md:flex-no-wrap bg-black absolute z-50">
 
     {/* Left side navbar */}
     <div className="mr-4 md:mr-8">

@@ -18,7 +18,7 @@ export default function Home() {
           <Navbar />
         </nav>
 
-        <main className="mb-auto dark:bg-gray-800">
+        <main className="flex-grow dark:bg-gray-800">
           <section className="h-screen flex">
             <Hero />
           </section>
