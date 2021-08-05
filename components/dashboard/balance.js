@@ -29,7 +29,7 @@ const Balance = () => {
   }
 
   return(
-    <div className="m-auto flex mt-6 mb-6 mr-6 ml-8 space-x-4">
+    <div className="m-auto flex mt-6 mb-6 mr-6 ml-8 space-x-4 pt-16">
 
       <div className="flex-auto shadow-xl bg-gray-50 rounded">
 
