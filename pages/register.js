@@ -1,5 +1,4 @@
-import Hero from 'components/landing/hero'
-import Cause from 'components/landing/cause'
+import Register from 'components/form/register'
 
 import HeadWebsite from 'components/global/head'
 import Navbar from 'components/global/navbar'
@@ -19,18 +18,10 @@ export default function Home() {
           <Navbar />
         </nav>
 
-        <main className="flex-grow dark:bg-gray-800">
-          <section className="h-screen flex">
-            <Hero />
+        <main className="flex-grow mb-auto dark:bg-gray-800">
+          <section>
+            <Register />
           </section>
-
-          {/* <section className="h-screen flex">
-            <Cause />
-          </section>
-
-          <section className="h-screen flex">
-            
-          </section> */}
         </main>
 
         <footer>
