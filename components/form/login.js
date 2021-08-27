@@ -1,21 +1,23 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faUser,
-  faLock
-} from '@fortawesome/free-solid-svg-icons'
+import { providers, signIn, getSession, csrfToken } from "next-auth/client"
+import {useRouter} from 'next/router'
+
+import {useState} from 'react'
 
 import Button from "components/button/button"
 
 import Link from 'next/link'
 
-const Login = () => {
+const Login = ({providers, csrfToken}) => {
+
+  // const [loginError, setLoginError] = useState('');
+  const router = useRouter
 
   const loginUser = async event => {
     event.preventDefault()
 
-    const res = await fetch('/api/login', {
+    const res = await fetch('/api/auth', {
       body: JSON.stringify({
-        username: event.target.username.value,
+        email: event.target.email.value,
         password: event.target.password.value
       }),
       headers: {
@@ -33,20 +35,23 @@ const Login = () => {
     <div className="p-6 flex flex-col justify-center items-center bg-gray-700">
 
       <div>
+        <div>
+          {/* {loginError} */}
+        </div>
         <form onSubmit={loginUser} className="flex flex-col">
 
           <div className="flex flex-col mb-8">
-            <label htmlFor="username" className="text-white">Username</label>
+            <label htmlFor="email" className="text-white mb-2">Email</label>
             <input 
-              id="username" 
+              id="email" 
               type="text"
               className="bg-gray-400 outline-none border-2 rounded p-1 focus:border-yellow-500" 
               required 
             />
           </div>
 
-          <div className="flex flex-col mb-8 text-white">
-            <label htmlFor="password">Password</label>
+          <div className="flex flex-col mb-8">
+            <label htmlFor="password" className="text-white mb-2">Password</label>
             <input 
               id="password" 
               type="password" 
@@ -62,17 +67,15 @@ const Login = () => {
 
         </form>
 
-        <div className="mt-4">
+        {/* <div className="mt-4">
           <ul>
             <li>
-              <Link href="/register">
-                <a>
-                  Register here
-                </a>
-              </Link>
+              <a onClick={() => newUser()}>
+                Register here
+              </a>
             </li>
           </ul>
-        </div>
+        </div> */}
 
       </div>
       

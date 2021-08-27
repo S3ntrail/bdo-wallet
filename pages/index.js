@@ -6,6 +6,25 @@ import Navbar from 'components/global/navbar'
 import Footer from 'components/global/footer'
 import Layout from 'components/global/layout'
 
+// export const getServerSideProps = async() => {
+
+//   const res = await fetch('/api/login', {
+
+//   })
+
+//   if(false) {
+//     return {
+//       props: {},
+//       redirect: {
+//         destination: "/dashboard"
+//       }
+//     }
+//   }
+//   return {
+//     props: {},
+//   }
+// }
+
 export default function Home() {
   return (
     <Layout>

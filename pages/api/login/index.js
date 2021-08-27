@@ -12,4 +12,12 @@ export default function handler(req, res) {
       console.log(hash);
     })
   })
+
+  if(!req) {
+    console.log("Error is niet goed gegaan");
+    return res.status(400).json({ valid: false})
+  } else {
+    return res.status(200).json({ valid: true })
+    return true;
+  }
 }

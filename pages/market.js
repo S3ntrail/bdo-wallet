@@ -1,32 +1,11 @@
-import Login from 'components/form/login'
+import MarketOverview from 'components/market/marketOverview'
 
 import HeadWebsite from 'components/global/head'
 import Navbar from 'components/global/navbar'
 import Footer from 'components/global/footer'
 import Layout from 'components/global/layout'
 
-import {getSession} from 'next-auth/client'
-
-export const getServerSideProps = async() => {
-
-  const session = await getSession()
-
-  if(session) {
-    return {
-      props: {},
-      redirect: {
-        destination: "/dashboard"
-      }
-    }
-  }
-  return {
-    props: {},
-  }
-
-}
-
 export default function Home() {
-
   return (
     <Layout>
 
@@ -41,7 +20,7 @@ export default function Home() {
 
         <main className="flex-grow mb-auto dark:bg-gray-800">
           <section>
-            <Login />
+            <MarketOverview />
           </section>
         </main>
 

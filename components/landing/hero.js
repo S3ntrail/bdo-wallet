@@ -9,6 +9,7 @@ import {
 import Button from "components/button/button";
 
 import Link from "next/link";
+import { signIn } from "next-auth/client";
 
 const Hero = () => {
   return (
@@ -23,11 +24,9 @@ const Hero = () => {
         </div>
 
         <div className="text-center">
-          <Link href="/login">
-            <a>
-              <Button title="Start tracking" />
-            </a>
-          </Link>
+          <a onClick={() => signIn()}>
+            <Button title="Start tracking" />
+          </a>
         </div>
       </div>
 
