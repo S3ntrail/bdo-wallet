@@ -8,9 +8,8 @@ const saltRounds = 10
 /* 
 
   Todo :
-  Proper error handling
-  Redirect to certain pages
-  Return the right HTTP status
+  Proper error handling V
+  Return the right HTTP status V
 
   Additional note :
 
@@ -21,44 +20,69 @@ const saltRounds = 10
 
 export default async function handler(req, res) {
 
-  const email = req.body.email
-  const username = req.body.username
-  const password = req.body.password
-
-  if(!password || password == null || !email || email == null || !username || username == null) {
-    return null
-  }
-
-  function existingUser(email) {
-    return db.oneOrNone('SELECT email, password FROM users WHERE email = ${email} LIMIT 1',{
-      email 
-    })
-  }
-
-  const hash = await bcrypt.hash(password, saltRounds)
+  if (req.method == 'POST') {
+    
+    const email = req.body.email
+    const username = req.body.username
+    const password = req.body.password
+    const regex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,15}$/
   
-  existingUser(email)
-    .then( data => {
-      if(data) {
-        console.log('User Exists ' + data);
-        return null
-      } else {
-        console.log('User Does not exists');
+    if(!password || password == null || !email || email == null || !username || username == null) {
+      return res.status(400).json({ 
+        status:'error', 
+        message: "Please fill in the fields"
+      }) 
+    }
 
-        db.none('INSERT INTO users(userid, password, email) VALUES(${userid}, ${password}, ${email})', {
-          userid: uuidv4(),
-          password: hash,
-          email: email
-        }).then( () => {
-          console.log('Insert Succesfull');
+    if(password.match(regex) === null || password.match(regex) === false) {
+      return res.status(400).json({ 
+        status:'error', 
+        message: "Password doesnt meet the requirements"
+      }) 
+    }
+
+    function existingUser(email) {
+      return db.oneOrNone('SELECT email FROM users WHERE email = ${email} LIMIT 1',{
+        email 
+      })
+    }
+
+    const hash = await bcrypt.hash(password, saltRounds)
+
+    existingUser(email)
+      .then( data => {
+        if(data) {
+          return res.status(400).json({
+            status: 'error', 
+            message: "User already exists"
+          })
           
-        }).catch(error => {
-          console.log(error);
-        })
-      }
-    })
-    .catch( error => {
-      console.log('uwu no database for you ' + error);
-    })
+        } else {
+  
+          db.none('INSERT INTO users(userid, password, email) VALUES(${userid}, ${password}, ${email})', {
+            userid: uuidv4(),
+            password: hash,
+            email: email
+          }).then( () => {
+
+            return res.status(200).json({ 
+              status: 'succes',
+              message: "User created successfully"
+            });
+
+          }).catch(error => {
+            console.log(error);
+          })
+
+          
+        }
+      })
+      .catch( error => {
+        console.log('uwu Something went wong : ' + error);
+      })
+
+  } else {
+    return res.status(404)
+  }
 
 }

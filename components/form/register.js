@@ -1,18 +1,31 @@
 import Button from 'components/button/button'
+import Message from 'components/popup/message'
 
 import {useState} from 'react'
 
 const Register = () => {
-  const [registerError, setRegisterError] = useState('');
+  const [result, setResult] = useState([]);
 
   const registerUser = async event => {
+
     event.preventDefault()
+
+    const username = event.target.username.value
+    const email = event.target.email.value
+    const password = event.target.password.value
+
+    if(!username || username == null || !email || email == null || !password || password == null) {
+      setResult({ 
+        status:'error', 
+        message: "Please fill in the fields"
+      })
+    }
 
     const res = await fetch('/api/register', {
       body: JSON.stringify({
-        username: event.target.username.value,
-        email: event.target.email.value,
-        password: event.target.password.value
+        username: username,
+        email: email,
+        password: password
       }),
       headers: {
         'Content-Type': 'application/json'
@@ -21,6 +34,9 @@ const Register = () => {
     })
 
     const result = await res.json()
+
+    setResult(result)
+
   }
 
   return(
@@ -29,9 +45,10 @@ const Register = () => {
     <div className="p-6 flex flex-col justify-center items-center bg-gray-700">
 
       <div>
-        <div>
-          {/* {registerError} */}
-        </div>
+        <Message message={result}/>
+      </div>
+
+      <div>
 
         <form onSubmit={registerUser} className="flex flex-col">
 
@@ -41,7 +58,7 @@ const Register = () => {
               id="username" 
               type="text"
               className="bg-gray-400 outline-none border-2 rounded p-1 focus:border-yellow-500" 
-              required 
+              // required 
             />
           </div>
 
@@ -51,7 +68,7 @@ const Register = () => {
               id="email" 
               type="email" 
               className="bg-gray-400 outline-none border-2 rounded p-1 focus:border-yellow-500" 
-              required 
+              // required 
             />
           </div>
 
@@ -62,7 +79,7 @@ const Register = () => {
               type="password" 
               className="bg-gray-400 outline-none border-2 rounded p-1 focus:border-yellow-500"
               minLength="8" 
-              required 
+              // required 
             />
           </div>
           
