@@ -23,7 +23,7 @@ export default async function handler(req, res) {
   try {
     if (req.method == 'POST') {
     
-      const email = req.body.email
+      const email = req.body.email.toLowerCase()
       const username = req.body.username
       const password = req.body.password
       const regex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,15}$/
