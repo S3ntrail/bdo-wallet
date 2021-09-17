@@ -15,6 +15,7 @@ const saltRounds = 10
 
 import NextAuth from "next-auth";
 import Providers from "next-auth/providers";
+import { data } from 'autoprefixer';
 
 const options = {
   providers : [
@@ -29,60 +30,49 @@ const options = {
 
       async authorize(credentials, req) {
 
-        const email = req.body.email
+        const email = req.body.email.toLowerCase()
         const password = req.body.password
 
-        console.log(credentials);
-
         if(!password || password == null || !email || email == null) {
-          console.log('Error returned | FIELDS MISSING');
           return null
         }
 
-        console.log('Passed Field check');
-
         function existingUser(email) {
-
-          console.log('Checking existing user function');
-
-          return db.oneOrNone('SELECT email, pass FROM users WHERE email = ${email} LIMIT 1',{
+          return db.oneOrNone('SELECT email, pass, id, wallet_id, username FROM users WHERE email = ${email} LIMIT 1',{
             email 
           })
         }
-
-        console.log('Passed existing user');
-
-        // const inputPassword = await bcrypt.hash(password, saltRounds)
-        // const inputPassword = password
-        // console.log(inputPassword);
-        // console.log('Passed password hash');
       
-        existingUser(email)
+        const user = await existingUser(email)
           .then( async (data) => {
             const hash = data.pass
 
             bcrypt.compare(password, hash, function(err, result) {
               if (err) throw err
 
-              if(result) {
-                console.log("succes");
-                console.log(result);
-              } else {
-                console.log("failure");
+              if (!result) {
+                return null
               }
+
             })
+
+            const user = {
+              id: data.id,
+              wallet_id: data.wallet_id,
+              username: data.username
+            }
+
+            return user
 
           })
           .catch( error => {
             console.log('uwu no database for you' + error);
           })
 
-        
-
         if (user) {
-          console.log(user);
+          return user
         } else {
-          console.log('null');
+          return null
         }
       }
     }),
