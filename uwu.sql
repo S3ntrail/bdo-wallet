@@ -1,10 +1,10 @@
-CREATE TABLE "user" (
+CREATE TABLE "users" (
   "id" uuid PRIMARY KEY NOT NULL,
-  "walletId" uuid UNIQUE NOT NULL,
-  "username" character(50) NOT NULL,
-  "pass" character(255) NOT NULL,
+  "wallet_id" uuid UNIQUE NOT NULL,
+  "username" varchar(30) NOT NULL,
+  "pass" varchar(255) NOT NULL,
   "created_at" date NOT NULL,
-  "mail" character(200) NOT NULL
+  "email" varchar(100) NOT NULL
 );
 
 CREATE TABLE "wallet" (
@@ -14,19 +14,19 @@ CREATE TABLE "wallet" (
 
 CREATE TABLE "transaction" (
   "id" int PRIMARY KEY NOT NULL,
-  "categoryId" uuid NOT NULL,
-  "walletId" uuid NOT NULL,
+  "category_id" uuid NOT NULL,
+  "wallet_id" uuid NOT NULL,
   "date" date NOT NULL,
   "amount" bigint NOT NULL
 );
 
 CREATE TABLE "category" (
   "id" uuid PRIMARY KEY NOT NULL,
-  "name" character(40)
+  "name" varchar(50)
 );
 
-ALTER TABLE "wallet" ADD FOREIGN KEY ("id") REFERENCES "user" ("walletId");
+ALTER TABLE "wallet" ADD FOREIGN KEY ("id") REFERENCES "users" ("wallet_id");
 
-ALTER TABLE "transaction" ADD FOREIGN KEY ("walletId") REFERENCES "wallet" ("id");
+ALTER TABLE "transaction" ADD FOREIGN KEY ("wallet_id") REFERENCES "wallet" ("id");
 
-ALTER TABLE "transaction" ADD FOREIGN KEY ("categoryId") REFERENCES "category" ("id");
+ALTER TABLE "transaction" ADD FOREIGN KEY ("category_id") REFERENCES "category" ("id");
