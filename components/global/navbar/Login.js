@@ -2,6 +2,9 @@ import { signIn, signOut, useSession, register } from 'next-auth/client'
 
 import Link from 'next/link'
 
+import SignInButton from 'components/button/Login/login'
+import RegisterButton from 'components/button/Register/register'
+
 const Login = () => {
   const [session, loading] = useSession()
 
@@ -24,13 +27,17 @@ const Login = () => {
     <div>
         <a 
           onClick={() => signIn()}
-          className="cursor-pointer"
+          className="cursor-pointer m-4"
         >
-          Sign in
+          <SignInButton
+            title="Login"
+          />
         </a>
 
       <Link href="/register">
-        <a> Create Account</a>
+        <RegisterButton
+          title="Register"
+        />
       </Link>
     </div>
   )

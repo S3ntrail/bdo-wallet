@@ -1,6 +1,3 @@
-import Hero from 'components/landing/hero'
-import Cause from 'components/landing/cause'
-
 import HeadWebsite from 'components/global/head'
 import Navbar from 'components/global/navbar'
 import Footer from 'components/global/footer'
@@ -29,18 +26,17 @@ export default function Home() {
   return (
     <Layout>
 
-      <div className="flex flex-col h-screen justify-between">
+      <div className="flex flex-col items-center justify-center">
         <div>
           <HeadWebsite />
         </div>
 
-        <nav>
-          <Navbar />
-        </nav>
+        <main className="flex flex-col justify-center w-full flex-1 text-center">
+          <div>
+            <Navbar />
+          </div>
 
-        <main className="flex-grow dark:bg-gray-800">
-          <section className="h-screen flex">
-            <Hero />
+          <section>
           </section>
 
           {/* <section className="h-screen flex">

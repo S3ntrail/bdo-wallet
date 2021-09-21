@@ -6,30 +6,17 @@
 
 * {
   font-family: "Noto Sans JP", serif;
+  color: white
 }
 
 a {
-  color: #f3f4f6;
   text-decoration: none;
-}
-
-a:hover {
-  color: #d79846;
 }
 
 p {
   color: #f3f4f6;
   font-size: 1rem;
   line-height: 1.5rem;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: #f3f4f6;
 }
 
 h1 {
