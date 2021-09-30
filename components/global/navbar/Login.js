@@ -24,21 +24,24 @@ const Login = () => {
   }
 
   return(
-    <div>
-        <a 
-          onClick={() => signIn()}
-          className="cursor-pointer m-4"
-        >
-          <SignInButton
-            title="Login"
-          />
-        </a>
+    <div className="flex">
+      <a 
+        onClick={() => signIn()}
+        className="cursor-pointer m-2"
+      >
+        <SignInButton
+          title="Login"
+        />
+      </a>
 
-      <Link href="/register">
+      <a
+        href="/register"
+        className="cursor-pointer m-2"
+      >
         <RegisterButton
           title="Register"
         />
-      </Link>
+      </a>
     </div>
   )
   
