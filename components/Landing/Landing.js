@@ -6,7 +6,7 @@ const Landing = () => {
   return(
     <div className="h-screen bg-gray-750 flex gap-2 justify-center flex-wrap">
       <div className="w-1/2 text-left">
-        <Image 
+        <Image
           src="/financial.svg"
           layout="fixed"
           width={850}

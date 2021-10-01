@@ -28,8 +28,9 @@ export default function Home() {
   return (
     <Layout>
 
+      <HeadWebsite />
+
       <div className="flex flex-col items-center justify-center">
-        <HeadWebsite />
 
         <main className="flex flex-col justify-center w-full flex-1 text-center">
           <div>
@@ -49,9 +50,9 @@ export default function Home() {
           </section> */}
         </main>
 
-        <footer>
+        <div className="flex flex-col justify-center w-full flex-1 text-center">
           <Footer />
-        </footer>
+        </div>
 
       </div>
 
