@@ -1,6 +1,8 @@
 import Button from 'components/button/button'
 import Message from 'components/popup/message'
 
+import Input from 'components/form/input/input'
+
 import {useState} from 'react'
 
 const Register = () => {
@@ -62,35 +64,28 @@ const Register = () => {
 
             <div className="flex flex-col mb-8">
               <label htmlFor="username" className="text-white text-left mb-2 tracking-wider uppercase">username</label>
-              <input 
-                id="username" 
+              <Input 
+                id="username"
                 type="text"
                 placeholder="username"
-                className="bg-gray-750 outline-none border-b-2 rounded p-2 focus:border-blue-350" 
-                // required 
               />
             </div>
 
             <div className="flex flex-col mb-8">
               <label htmlFor="password" className="text-white text-left mb-2 tracking-wider uppercase">Password</label>
-              <input 
-                id="password" 
+              <Input 
+                id="password"
                 type="password"
-                placeholder="password" 
-                className="bg-gray-750 outline-none border-b-2 rounded p-2 focus:border-blue-350"
-                minLength="8" 
-                // required 
+                placeholder="password"
               />
             </div>
 
             <div className="flex flex-col mb-8">
               <label htmlFor="email" className="text-white text-left mb-2 tracking-wider uppercase">Email</label>
-              <input 
-                id="email" 
+              <Input 
+                id="email"
                 type="email"
-                placeholder="email address" 
-                className="bg-gray-750 outline-none border-b-2 rounded p-2 focus:border-blue-350"
-                // required 
+                placeholder="email address"
               />
             </div>
 
