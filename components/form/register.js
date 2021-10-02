@@ -61,32 +61,35 @@ const Register = () => {
           <form onSubmit={registerUser}>
 
             <div className="flex flex-col mb-8">
-              <label htmlFor="username" className="text-white mb-2">Username</label>
+              <label htmlFor="username" className="text-white text-left mb-2 tracking-wider uppercase">username</label>
               <input 
                 id="username" 
                 type="text"
-                className="bg-gray-750 outline-none border-b-2 rounded p-1 focus:border-blue-350" 
+                placeholder="username"
+                className="bg-gray-750 outline-none border-b-2 rounded p-2 focus:border-blue-350" 
                 // required 
               />
             </div>
 
             <div className="flex flex-col mb-8">
-              <label htmlFor="password" className="text-white mb-2">Password</label>
+              <label htmlFor="password" className="text-white text-left mb-2 tracking-wider uppercase">Password</label>
               <input 
                 id="password" 
-                type="password" 
-                className="bg-gray-750 outline-none border-b-2 rounded p-1 focus:border-blue-350"
+                type="password"
+                placeholder="password" 
+                className="bg-gray-750 outline-none border-b-2 rounded p-2 focus:border-blue-350"
                 minLength="8" 
                 // required 
               />
             </div>
 
             <div className="flex flex-col mb-8">
-              <label htmlFor="email" className="text-white mb-2">Email</label>
+              <label htmlFor="email" className="text-white text-left mb-2 tracking-wider uppercase">Email</label>
               <input 
                 id="email" 
-                type="email" 
-                className="bg-gray-750 outline-none border-b-2 rounded p-1 focus:border-blue-350"
+                type="email"
+                placeholder="email address" 
+                className="bg-gray-750 outline-none border-b-2 rounded p-2 focus:border-blue-350"
                 // required 
               />
             </div>
