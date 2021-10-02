@@ -43,11 +43,7 @@ export default function Home() {
 
           {/* <section className="h-screen flex">
             <Cause />
-          </section>
-
-          <section className="h-screen flex">
-            
-          </section> */}
+          </section>*/}
         </main>
 
         <div className="flex flex-col justify-center w-full flex-1 text-center">

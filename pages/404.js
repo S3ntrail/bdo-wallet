@@ -9,28 +9,28 @@ export default function Home() {
   return (
     <Layout>
 
-      <div className="flex flex-col h-screen justify-between">
-        <div>
-          <HeadWebsite />
-        </div>
+      <HeadWebsite />
 
-        <nav>
-          <Navbar />
-        </nav>
+      <div className="flex flex-col items-center justify-center">
 
-        <main className="mb-auto dark:bg-gray-800">
+        <main className="flex flex-col justify-center w-full flex-1 text-center">
+          <div>
+            <Navbar />
+          </div>
+
           <section>
             <Error />
           </section>
+
         </main>
 
-        <footer>
+        <div className="flex flex-col justify-center w-full flex-1 text-center">
           <Footer />
-        </footer>
+        </div>
 
       </div>
 
-    </Layout>
+  </Layout>
 
   )
 }
