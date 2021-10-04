@@ -2,6 +2,7 @@ import Button from 'components/button/button'
 import Message from 'components/popup/message'
 
 import Input from 'components/form/input/input'
+import Label from 'components/form/label/label'
 
 import {useState} from 'react'
 
@@ -63,7 +64,10 @@ const Register = () => {
           <form onSubmit={registerUser}>
 
             <div className="flex flex-col mb-8">
-              <label htmlFor="username" className="text-white text-left mb-2 tracking-wider uppercase">username</label>
+              <Label 
+                for="username"
+                title="username"
+              />
               <Input 
                 id="username"
                 type="text"
@@ -72,7 +76,10 @@ const Register = () => {
             </div>
 
             <div className="flex flex-col mb-8">
-              <label htmlFor="password" className="text-white text-left mb-2 tracking-wider uppercase">Password</label>
+              <Label 
+                for="password"
+                title="password"
+              />
               <Input 
                 id="password"
                 type="password"
@@ -81,7 +88,10 @@ const Register = () => {
             </div>
 
             <div className="flex flex-col mb-8">
-              <label htmlFor="email" className="text-white text-left mb-2 tracking-wider uppercase">Email</label>
+              <Label 
+                for="email"
+                title="email"
+              />
               <Input 
                 id="email"
                 type="email"
