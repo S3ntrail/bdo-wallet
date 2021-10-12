@@ -1,4 +1,4 @@
-import { signIn, signOut, useSession, register } from 'next-auth/client'
+// import { useSession, signIn, signOut } from "next-auth/react"
 
 import Link from 'next/link'
 
@@ -6,14 +6,16 @@ import SignInButton from 'components/button/Login/login'
 import RegisterButton from 'components/button/Register/register'
 
 const Login = () => {
-  const [session, loading] = useSession()
 
-  if(session) {
+  // const {data: session, status} = useSession()
+
+  // console.log(session, status);
+
+  if("") {
     return (
       <div>
-        <p>{session.user.name}</p> 
+        <p>Signed in as {session.user.username}</p> 
         <a 
-          onClick={() => signOut()}
           className="cursor-pointer"
         >
           Sign out
@@ -26,7 +28,7 @@ const Login = () => {
   return(
     <div className="flex">
       <a 
-        onClick={() => signIn()}
+        href="/login"
         className="cursor-pointer m-2"
       >
         <SignInButton

@@ -11,15 +11,13 @@
 import db from '../../../lib/db'
 
 import bcrypt from 'bcrypt'
-const saltRounds = 10
 
-import NextAuth from "next-auth";
-import Providers from "next-auth/providers";
-import { data } from 'autoprefixer';
+import NextAuth from "next-auth"
+import CredentialsProvider from "next-auth/providers/credentials"
 
 const options = {
   providers : [
-    Providers.Credentials({
+    CredentialsProvider({
       id: 'credentials',
       name: "Account",
 
@@ -45,6 +43,7 @@ const options = {
       
         const user = await existingUser(email)
           .then( async (data) => {
+            console.log('data', data)
             const hash = data.pass
 
             bcrypt.compare(password, hash, function(err, result) {
@@ -59,7 +58,7 @@ const options = {
             const user = {
               id: data.id,
               wallet_id: data.wallet_id,
-              username: data.username
+              username: data.username,
             }
 
             return user
@@ -68,6 +67,8 @@ const options = {
           .catch( error => {
             console.log('uwu no database for you' + error);
           })
+
+        console.log('user', user)
 
         if (user) {
           return user
@@ -81,6 +82,12 @@ const options = {
     jwt: true,
     maxAge: 30 * 24 * 60 * 60, // 30 days
     updateAge: 24 * 60 * 60, // 24 hours
+  },
+  jwt: {
+    signingKey: {"kty":"oct","kid":"--","alg":"HS256","k":"--"},
+    verificationOptions: {
+      algorithms: ["HS256"]
+    }
   }
 }
 

@@ -5,19 +5,6 @@ import { v4 as uuidv4 } from 'uuid'
 import bcrypt from 'bcrypt'
 const saltRounds = 10
 
-/* 
-
-  Todo :
-  Proper error handling V
-  Return the right HTTP status V
-
-  Additional note :
-
-  Once completed the user must be directed to the login page with a message
-  that his registration has been completed and that he can login from now on.
-
-*/
-
 export default async function handler(req, res) {
   
   try {

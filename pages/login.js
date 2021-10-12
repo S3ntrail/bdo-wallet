@@ -5,25 +5,23 @@ import Navbar from 'components/global/navbar'
 import Footer from 'components/global/footer'
 import Layout from 'components/global/layout'
 
-import {getSession} from 'next-auth/client'
+// export const getServerSideProps = async() => {
 
-export const getServerSideProps = async() => {
+//   const session = await getSession()
 
-  const session = await getSession()
+//   if(session) {
+//     return {
+//       props: {},
+//       redirect: {
+//         destination: "/dashboard"
+//       }
+//     }
+//   }
+//   return {
+//     props: {},
+//   }
 
-  if(session) {
-    return {
-      props: {},
-      redirect: {
-        destination: "/dashboard"
-      }
-    }
-  }
-  return {
-    props: {},
-  }
-
-}
+// }
 
 export default function Home() {
 
