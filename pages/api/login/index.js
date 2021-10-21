@@ -1,23 +1,76 @@
-const bycrypt = require('bcrypt')
+import db from '../../../lib/db'
+
+import bcrypt from 'bcrypt'
 const saltRounds = 10
 
-export default function handler(req, res) {
-  let user = req.body.username
-  let password = req.body.password
+export default async function handler(req, res) {
+  try {
+      const email = req.body.email.toLowerCase()
+      const password = req.body.password
 
-  console.log(user);
+      if(!password || password == null || !email || email == null) {
+        return res.status(400).json({ 
+          status:'error', 
+          message: "Please fill in the fields"
+        }) 
+      }
 
-  bycrypt.genSalt(saltRounds, function(err, salt){
-    bycrypt.hash(password, salt, function(err, hash){
-      console.log(hash);
-    })
-  })
+      function existingUser(email) {
+        return db.oneOrNone('SELECT email, pass, id, wallet_id, username FROM users WHERE email = ${email} LIMIT 1',{
+          email 
+        })
+      }
 
-  if(!req) {
-    console.log("Error is niet goed gegaan");
-    return res.status(400).json({ valid: false})
-  } else {
-    return res.status(200).json({ valid: true })
-    return true;
+      const user = await existingUser(email)
+        .then( async (data) => {
+          const hash = data.pass
+
+          bcrypt.compare(password, hash, function(err, result) {
+            if (err) throw err
+
+            if (!result) {
+              return res.status(400).json({
+                status: 'error', 
+                message: "User doesnt match the password/email"
+              })
+            }
+
+          })
+
+          const user = {
+            id: data.id,
+            wallet_id: data.wallet_id,
+            username: data.username,
+          }
+
+          return user
+
+        })
+        .catch( error => {
+          console.log('uwu no database for you' + error);
+        })
+
+      if (user) {
+        req.session.set("user", {
+          user
+        })
+        await req.session.save()
+        return res.status(200).json({
+          status: 'success'
+        })
+      } else {
+        return res.status(400).json({
+          status: 'error', 
+          message: "Something went internally wrong. Contact the administrator"
+        })
+      }
+    }
+
+  catch (error) {
+    res.json(error)
+    res.status(405).end()
   }
 }
+
+
+  

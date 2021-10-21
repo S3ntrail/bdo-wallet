@@ -1,13 +1,3 @@
-/*
-
-  Todo : 
-    Compare hash with input password
-    Check if the user exist and if the password matches
-    Proper error handling
-    Think about ditching nextauth?
-*/
-
-
 import db from '../../../lib/db'
 
 import bcrypt from 'bcrypt'
@@ -71,6 +61,7 @@ const options = {
         console.log('user', user)
 
         if (user) {
+          console.log(user);
           return user
         } else {
           return null
@@ -83,12 +74,9 @@ const options = {
     maxAge: 30 * 24 * 60 * 60, // 30 days
     updateAge: 24 * 60 * 60, // 24 hours
   },
-  jwt: {
-    signingKey: {"kty":"oct","kid":"--","alg":"HS256","k":"--"},
-    verificationOptions: {
-      algorithms: ["HS256"]
-    }
-  }
+  // pages: {
+  //   signIn: '/login',
+  // }
 }
 
 export default (req,res) => NextAuth(req,res,options)

@@ -5,9 +5,9 @@ import Navbar from 'components/global/navbar'
 import Footer from 'components/global/footer'
 import Layout from 'components/global/layout'
 
-// export const getServerSideProps = async() => {
+// export const getServerSideProps = async(req, res) => {
 
-//   const session = await getSession()
+//   const session = res.session
 
 //   if(session) {
 //     return {

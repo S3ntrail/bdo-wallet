@@ -8,7 +8,7 @@ const saltRounds = 10
 export default async function handler(req, res) {
   
   try {
-    if (req.method == 'POST') {
+    if (req.method === 'POST') {
     
       const email = req.body.email.toLowerCase()
       const username = req.body.username

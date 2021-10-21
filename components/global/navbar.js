@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import Login from './navbar/Login'
+import NavbarStatus from './navbar/navbarstatus'
 
 const Navbar = () => {
   return (
@@ -33,7 +33,7 @@ const Navbar = () => {
           </ul>
 
           <div className="flex flex-col mt-4 -mx-4 pt-4 md:flex-row md:items-center md:mx-0 md:ml-auto md:mt-0 md:pt-0 md:border-0">
-            <Login />
+            <NavbarStatus />
           </div>
 
         </div>
