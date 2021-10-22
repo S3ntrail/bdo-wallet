@@ -11,12 +11,10 @@ const NavbarStatus = () => {
 
   const [session, loading] = useSession()
 
-  console.log(session);
-
   if(session) {
     return (
       <div>
-        <p>Signed in as {session.user.username}</p> 
+        <p>Signed in as {session.user.name}</p> 
         <a 
           onClick={ () => signOut()}
           className="cursor-pointer"

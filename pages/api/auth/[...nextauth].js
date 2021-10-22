@@ -3,13 +3,12 @@ import db from '../../../lib/db'
 import bcrypt from 'bcrypt'
 
 import NextAuth from "next-auth"
-import CredentialsProvider from "next-auth/providers/credentials"
+import Providers from "next-auth/providers"
 
-const options = {
+export default NextAuth({
   providers : [
-    CredentialsProvider({
-      id: 'credentials',
-      name: "Account",
+    Providers.Credentials({
+      name: "Credentials",
 
       credentials: {
         email: {label: "Email", type: "email", placeholder: "youremail@email.com"},
@@ -48,7 +47,7 @@ const options = {
             const user = {
               id: data.id,
               wallet_id: data.wallet_id,
-              username: data.username,
+              name: data.username,
             }
 
             return user
@@ -57,8 +56,6 @@ const options = {
           .catch( error => {
             console.log('uwu no database for you' + error);
           })
-
-        console.log('user', user)
 
         if (user) {
           console.log(user);
@@ -77,7 +74,5 @@ const options = {
   // pages: {
   //   signIn: '/login',
   // }
-}
-
-export default (req,res) => NextAuth(req,res,options)
+})
 

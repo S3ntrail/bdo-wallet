@@ -5,12 +5,11 @@ import RegisterButton from 'components/button/Register/register'
 const Landing = () => {
   return(
     <div className="h-screen bg-gray-750 flex gap-2 justify-center flex-wrap">
-      <div className="w-1/2 text-lef">
+      <div className="w-1/2 text-left relative md:hidden lg:block mb-24">
         <Image
           src="/financial.svg"
-          layout="fixed"
-          width={850}
-          height={700}
+          layout="fill"
+          objectFit="fill"
         />
       </div>
 
