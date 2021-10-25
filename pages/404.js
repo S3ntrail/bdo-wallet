@@ -5,7 +5,6 @@ import Error from 'components/global/error'
 import HeadWebsite from 'components/global/head'
 import Navbar from 'components/global/navbar'
 import Footer from 'components/global/footer'
-import Layout from 'components/global/layout'
 
 import { useEffect } from 'react'
 
@@ -20,7 +19,7 @@ export default function Home() {
   }, [])
 
   return (
-    <Layout>
+    <>
 
       <HeadWebsite />
 
@@ -43,7 +42,7 @@ export default function Home() {
 
       </div>
 
-  </Layout>
+  </>
 
   )
 }

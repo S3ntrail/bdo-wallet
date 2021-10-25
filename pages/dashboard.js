@@ -4,12 +4,10 @@ import Balance from 'components/dashboard/balance'
 import HeadWebsite from 'components/global/head'
 import Navbar from 'components/global/navbar'
 import Footer from 'components/global/footer'
-import Layout from 'components/global/layout'
 
 export default function Home() {
   return (
-    <Layout>
-
+    <>
       <HeadWebsite />
 
       <div className="flex flex-col items-center justify-center">
@@ -32,8 +30,6 @@ export default function Home() {
         </div>
 
       </div>
-
-    </Layout>
-
+    </>
   )
 }

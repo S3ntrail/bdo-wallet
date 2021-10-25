@@ -1,7 +1,6 @@
 import HeadWebsite from 'components/global/head'
 import Navbar from 'components/global/navbar'
 import Footer from 'components/global/footer'
-import Layout from 'components/global/layout'
 
 import Landing from 'components/Landing/Landing'
 
@@ -26,7 +25,7 @@ import Landing from 'components/Landing/Landing'
 
 export default function Home() {
   return (
-    <Layout>
+    <>
 
       <HeadWebsite />
 
@@ -52,7 +51,7 @@ export default function Home() {
 
       </div>
 
-    </Layout>
+    </>
 
   )
 }
