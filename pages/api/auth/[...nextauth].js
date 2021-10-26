@@ -57,7 +57,6 @@ export default NextAuth({
           })
 
         if (user) {
-          console.log(user);
           return user
         } else {
           return null
@@ -72,18 +71,18 @@ export default NextAuth({
   },
   callbacks: {
     jwt: async (token, user) => {
-        //  "user" parameter is the object received from "authorize"
-        //  "token" is being send below to "session" callback...
-        //  ...so we set "user" param of "token" to object from "authorize"...
-        //  ...and return it...
-        user && (token.user = user);
-        return Promise.resolve(token)   // ...here
+      //  "user" parameter is the object received from "authorize"
+      //  "token" is being send below to "session" callback...
+      //  ...so we set "user" param of "token" to object from "authorize"...
+      //  ...and return it...
+      user && (token.user = user);
+      return Promise.resolve(token)   // ...here
     },
     session: async (session, user, sessionToken) => {
-        //  "session" is current session object
-        //  below we set "user" param of "session" to value received from "jwt" callback
-        session.user = user.user;
-        return Promise.resolve(session)
+      //  "session" is current session object
+      //  below we set "user" param of "session" to value received from "jwt" callback
+      session.user = user.user;
+      return Promise.resolve(session)
     }
   }
   // pages: {

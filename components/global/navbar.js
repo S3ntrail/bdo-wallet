@@ -25,7 +25,7 @@ const Navbar = () => {
             </li>
 
             <li>
-              <Link href="#">
+              <Link href="/dashboard">
                 <a className="block px-4 py-4 font-semibold transition duration-500 hover:bg-purple-600 hover:text-white" href="#" title="Link">Dashboard</a>
               </Link>
             </li>
