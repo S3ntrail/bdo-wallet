@@ -6,17 +6,17 @@ const Card = (props) => {
  
   return (
     <div className="flex-auto shadow-xl bg-gray-50 rounded border-gray-500">
-      <div className="m-2">
-        <div className="flex">
+      <div className="m-4">
+        <div className="">
           {/* Icon */}
-          <div className={iconStyle}>
+          {/* <div className={iconStyle}>
             <FontAwesomeIcon
               icon={['fas', props.icon]}
               className="text-white fa-2x m-4"
             />
-          </div>
+          </div> */}
 
-          <div className="flex flex-col justify-center ml-6">
+          <div className="flex flex-col justify-center text-center">
             {/* Outcome */}
             <h3 className="text-black">{props.amount}</h3>
 
