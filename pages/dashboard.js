@@ -1,11 +1,29 @@
 import Balance from 'components/dashboard/balance'
 // import Chart from '@/components/dashboard/chart'
+import Transaction from 'components/form/transaction'
 
 import HeadWebsite from 'components/global/head'
 import Navbar from 'components/global/navbar'
 import Footer from 'components/global/footer'
 
+import { useState, useEffect } from 'react'
+import { useSession, signIn } from 'next-auth/client'
+
+import { useRouter } from 'next/router'
+
 export default function Home() {
+
+  const [session, loading] = useSession()
+  const router = useRouter()
+
+  if(!session) {
+    useEffect( () => {
+      setTimeout( () => {
+        router.push( signIn())
+      }, 0)
+    }, [])
+  }
+
   return (
     <>
       <HeadWebsite />
@@ -20,8 +38,14 @@ export default function Home() {
 
           <section>
             <Balance />
+          </section>
 
+          <section>
             {/* <Chart /> */}
+          </section>
+
+          <section>
+            <Transaction />
           </section>
         </main>
 

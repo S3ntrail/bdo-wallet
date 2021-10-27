@@ -2,12 +2,8 @@ import Card from 'components/card/card'
 
 const Balance = () => {
 
-  // useEffect(() => {
-  //   // Retrieve wallet and transactions from the datbase
-  // })
-
   return(
-    <div className="m-auto flex mb-6 mr-6 ml-8 space-x-4 pt-16">
+    <div className="m-auto flex mb-6 mr-6 ml-8 mt-8 space-x-4">
       <Card 
         amount="5000"
         title="Balance"

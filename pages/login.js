@@ -4,9 +4,12 @@ import HeadWebsite from 'components/global/head'
 import Navbar from 'components/global/navbar'
 import Footer from 'components/global/footer'
 
-// export const getServerSideProps = async(req, res) => {
+import {useEffect} from 'react'
 
-//   const session = res.session
+import { useRouter } from 'next/router'
+
+
+// export const getServerSideProps = async(req, res) => {
 
 //   if(session) {
 //     return {
@@ -23,6 +26,14 @@ import Footer from 'components/global/footer'
 // }
 
 export default function Home() {
+
+  const router = useRouter()
+
+  useEffect( () => {
+    setTimeout( () => {
+      router.push('/404')
+    }, 0)
+  }, [])
 
   return (
     <>

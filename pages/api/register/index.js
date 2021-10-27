@@ -61,12 +61,17 @@ export default async function handler(req, res) {
               created_at: dateToday,
               email: email,
             }).then( () => {
-  
+
+              db.none('INSERT INTO wallet(id, balance) VALUES(${id}, ${balance}'), {
+                id: uuid,
+                balance: 0
+              }
+
               return res.status(200).json({ 
                 status: 'succes',
                 message: "User created successfully"
               });
-  
+
             }).catch(error => {
               console.log(error);
             })

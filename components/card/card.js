@@ -16,7 +16,7 @@ const Card = (props) => {
             />
           </div>
 
-          <div className="flex flex-col justify-center">
+          <div className="flex flex-col justify-center ml-6">
             {/* Outcome */}
             <h3 className="text-black">{props.amount}</h3>
 
