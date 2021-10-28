@@ -4,7 +4,24 @@ import HeadWebsite from 'components/global/head'
 import Navbar from 'components/global/navbar'
 import Footer from 'components/global/footer'
 
+import { useEffect } from 'react'
+import { useSession, signIn } from 'next-auth/client'
+
+import { useRouter } from 'next/router'
+
 export default function Home() {
+
+  const [session, loading] = useSession()
+  const router = useRouter()
+
+  if(session) {
+    useEffect( () => {
+      setTimeout( () => {
+        router.push('/')
+      }, 0)
+    }, [])
+  }
+
   return (
     <>
 

@@ -6,7 +6,7 @@ import HeadWebsite from 'components/global/head'
 import Navbar from 'components/global/navbar'
 import Footer from 'components/global/footer'
 
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { useSession, signIn } from 'next-auth/client'
 
 import { useRouter } from 'next/router'

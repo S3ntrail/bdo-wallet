@@ -17,7 +17,10 @@ const Transaction = () => {
 
     event.preventDefault()
 
-    if(!email || email == null || !password || password == null) {
+    const balance = event.target.newBalance.value
+    const profitOrLoss = event.target.profitorloss.value
+
+    if (!balance || balance == null || !profitOrLoss || profitOrLoss == null) {
       setResult({ 
         status:'error', 
         message: "Please fill in the fields"
@@ -26,8 +29,8 @@ const Transaction = () => {
 
     const res = await fetch('/api/dashboard/transaction', {
       body: JSON.stringify({
-        email: email,
-        password: password
+        balance: balance,
+        profitOrLoss: profitOrLoss,
       }),
       headers: {
         'Content-Type': 'application/json'
@@ -36,6 +39,8 @@ const Transaction = () => {
     })
 
     const result = await res.json()
+
+    setResult(result)
   }
 
   return (
@@ -46,7 +51,7 @@ const Transaction = () => {
         <div>
 
           <div>
-            {/* <Message message={result}/> */}
+            <Message message={result}/>
           </div>
 
           <form onSubmit={createTransaction}>
@@ -65,6 +70,20 @@ const Transaction = () => {
 
             <div className="flex flex-col mb-8">
               <Label 
+                for="profitOrLoss"
+                title="Profit or Loss"
+              />
+              <Select 
+                id="profitorloss"
+                items={[
+                  "Profit",
+                  "Loss"
+                ]}
+              />
+            </div>
+
+            {/* <div className="flex flex-col mb-8">
+              <Label 
                 for="category"
                 title="category"
               />
@@ -77,7 +96,7 @@ const Transaction = () => {
                   "Test4",
                 ]}
               />
-            </div>
+            </div> */}
 
             <div className="mt-8">
               <hr></hr>

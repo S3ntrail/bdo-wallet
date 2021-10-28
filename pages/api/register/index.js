@@ -62,10 +62,10 @@ export default async function handler(req, res) {
               email: email,
             }).then( () => {
 
-              db.none('INSERT INTO wallet(id, balance) VALUES(${id}, ${balance}'), {
+              db.none('INSERT INTO wallet(id, balance) VALUES(${id}, ${balance})', {
                 id: uuid,
                 balance: 0
-              }
+              })
 
               return res.status(200).json({ 
                 status: 'succes',
