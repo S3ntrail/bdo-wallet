@@ -36,8 +36,6 @@ export default async function handler(req, res) {
         .then( (data) => {
           const oldBalance = data.balance
 
-          console.log(data);
-
           if (profitOrLoss == 0) {
             if (balance < oldBalance) {
               return res.status(406).json({ 
@@ -74,10 +72,6 @@ export default async function handler(req, res) {
             id: id,
             balance: balance
           })
-
-          console.log("Executed Update balance");
-
-          console.log("Preparing res.status");
 
           return res.status(200).json({ 
             status: 'succes',
