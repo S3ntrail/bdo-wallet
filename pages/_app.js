@@ -1,6 +1,6 @@
 import '../styles/globals.css'
 import Layout from '../components/global/layout'
-import { ReferenceDataContext, ReferenceDataContextProvider } from 'components/context/context'
+import { DashboardProvider } from 'components/context/context'
 
 import { Provider } from "next-auth/client"
 
@@ -34,10 +34,12 @@ export default function MyApp({ Component, pageProps }) {
   return (
     <>
       <QueryClientProvider client={queryclient}>
-        {loading && <Layout />}
-        <Provider session={pageProps.session}>
-          <Component {...pageProps} />
-        </Provider>
+        <DashboardProvider>
+          <Provider session={pageProps.session}>
+            {loading && <Layout />}
+            <Component {...pageProps} />
+          </Provider>
+        </DashboardProvider>
       </QueryClientProvider>
     </>
   );
