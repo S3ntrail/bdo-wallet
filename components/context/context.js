@@ -1,27 +1,24 @@
 import { createContext, useState } from 'react'
 
+import { useQuery } from 'react-query'
+
 const DashboardContext = createContext()
 
 const DashboardProvider = ({children}) => {
-  const [balance, setBalance] = useState([])
+  
+  const { data: balance, refetch: refetchBalance } = useQuery('balance', () => 
+    fetch('http://localhost:3000/api/dashboard/balance')
+      .then( async (res) => {
+        const parsed = await res.json()
 
-  const refreshBalance = async () => {
-    try {
-      const res = await fetch(process.env.BASE_URL + '/api/dashboard/balance')
-      const result = res.json()
-
-      console.log(result);
-      setBalance(balance)
-    } catch (error) {
-      console.log(error);
-    }
-
-  }
+        return parsed.balance
+      })
+  )
 
   return (
     <DashboardContext.Provider
       value={{
-        refreshBalance,
+        balance
       }}
     >
 
