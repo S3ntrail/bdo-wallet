@@ -37,8 +37,8 @@ export default async function handler(req, res) {
           const oldBalance = data.balance
 
           if (profitOrLoss == 0) {
-            if (balance < oldBalance) {
-              return res.status(406).json({ 
+            if (oldBalance > balance) {
+              return res.status(400).json({ 
                 status: 'error',
                 message: "Are you sure you made profit?"
               });
@@ -52,7 +52,7 @@ export default async function handler(req, res) {
               })
             }
           } else {
-            if (balance > oldBalance) {
+            if (oldBalance < balance) {
               return res.status(406).json({ 
                 status: 'error',
                 message: "Are you sure you made loss?"
