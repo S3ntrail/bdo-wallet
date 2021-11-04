@@ -1,6 +1,4 @@
-import useSession from 'next-auth/client'
-
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 
 import Button from 'components/button/button'
 import Message from 'components/popup/message'
@@ -42,7 +40,19 @@ const Transaction = () => {
 
     setResult(result)
   }
-  console.log(result);
+
+  useEffect(() => {
+    if (result) {
+      const timer = setTimeout(() => {
+        setResult()
+      }, 5000)
+  
+      return () => {
+        clearTimeout(timer)
+      }
+    }
+  }, [result])
+
   return (
     <div className="flex justify-center">
 
