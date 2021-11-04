@@ -1,42 +1,44 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from "react";
 
-const Message = props => {
+const Message = (props) => {
+  const [visible, setVisible] = useState(true);
 
-  const message = props.message.message
-  let status = props.message.status
+  const delay = props.delay;
+  const message = props.message.message;
+  let status = props.message.status;
 
-  switch(status) {
-    case 'error':
-      status = "bg-red-500 rounded-lg none"
+  switch (status) {
+    case "error":
+      status = "bg-red-500 rounded-lg";
       break;
-    case 'succes':
-      status = "bg-green-500 rounded-lg none"
+    case "succes":
+      status = "bg-green-500 rounded-lg";
       break;
-    default:
-      status = "hidden"
-      break
   }
 
   useEffect(() => {
-    const timeId = setTimeout(() => {
-      // After 3 seconds set the show value to false
-      status = "hidden"
-    }, 3000)
+    setTimeout(() => {
+      setVisible(false);
+    }, delay);
+  }, [delay]);
 
-    return () => {
-      clearTimeout(timeId)
-    }
-  }, []);
-
-  return (
-    <div className={status}>
-      <div className='text-center p-2 mb-4'>
-        <div className="text-black">
-          <p className="font-medium">{message}</p>
+  if (visible) {
+    return (
+      <div>
+        <div className={status}>
+          <div className="text-center p-2 mb-4">
+            <div className="text-black">
+              <p className="font-medium">{message}</p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  )
-}
+    );
+  }
 
-export default Message
+  return (
+    <div />
+  )
+};
+
+export default Message;

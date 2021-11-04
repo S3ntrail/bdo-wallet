@@ -11,7 +11,7 @@ import Select from 'components/form/select/select'
 
 const Transaction = () => {
 
-  const [result, setResult] = useState([]);
+  const [result, setResult] = useState();
 
   const createTransaction = async event => {
 
@@ -42,7 +42,7 @@ const Transaction = () => {
 
     setResult(result)
   }
-
+  console.log(result);
   return (
     <div className="flex justify-center">
 
@@ -51,7 +51,12 @@ const Transaction = () => {
         <div>
 
           <div>
-            <Message message={result}/>
+            {result && 
+              <Message 
+                message={result}
+                delay="5000"
+              />
+            }
           </div>
 
           <form onSubmit={createTransaction}>
