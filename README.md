@@ -2,12 +2,29 @@
 
 BDO & You is an open-source project used for tracking the market and your financials inside the MMORPG game Black Desert Online
 
-## Installation
+## Installation / Setup
 
-Use the package manager [npm] (https://nodejs.org/en/)
+Once forked. Please don't forget to install the packages and dependency's.  
 
 ```bash
 npm install
+```
+or
+```bash
+yarn install
+```
+
+Once done please make sure you have a .env file in order to use the db file
+
+```bash
+BASE_URL=
+
+DATABASE_HOST=
+DATABASE_PORT=
+DATABASE_TYPE=
+DATABASE_USER=
+DATABASE_PASSWORD=
+DATABASE_NAME=
 ```
 
 ## Usage
