@@ -1,5 +1,5 @@
 import Balance from 'components/dashboard/balance'
-// import Chart from '@/components/dashboard/chart'
+import PieChart from 'components/dashboard/chart'
 import Transaction from 'components/form/transaction'
 
 import HeadWebsite from 'components/global/head'
@@ -41,12 +41,15 @@ export default function Home() {
             />
           </section>
 
-          <section>
-            {/* <Chart /> */}
-          </section>
+          <section className="flex bg-black w-full">
+            <div className="inline-block">
+              <PieChart />
+            </div>
 
-          <section>
-            <Transaction />
+            <div className="inline-block">
+              <Transaction />
+            </div>
+
           </section>
         </main>
 
