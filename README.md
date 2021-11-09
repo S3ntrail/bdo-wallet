@@ -2,6 +2,10 @@
 
 BDO & You is an open-source project used for tracking the market and your financials inside the MMORPG game Black Desert Online
 
+## Work in Progress
+
+BDO & You is still heavily in work in progress
+
 ## Installation / Setup
 
 Once forked. Please don't forget to install the packages and dependency's.  
