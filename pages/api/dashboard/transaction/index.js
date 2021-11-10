@@ -35,38 +35,35 @@ export default async function handler(req, res) {
       const transaction = await retrieveBalance(id)
         .then( (data) => {
           const oldBalance = data.balance
+          let total = 0
 
           if (profitOrLoss == 0) {
             if (oldBalance > balance) {
-              return res.status(400).json({ 
-                status: 'error',
+              return res.status(400).json({
+                status:'error', 
                 message: "Are you sure you made profit?"
-              });
-            } else {
-              db.none('INSERT INTO transaction(id, wallet_id, date, amount, profitorloss) VALUES(${id}, ${wallet_id}, ${date}, ${amount}, ${profitorloss})',{
-                id: uuid,
-                wallet_id: walletid,
-                date: dateToday,
-                amount: balance - oldBalance,
-                profitorloss: true
               })
+            } else {
+              total = balance - oldBalance
             }
           } else {
             if (oldBalance < balance) {
-              return res.status(400).json({ 
-                status: 'error',
-                message: "Are you sure you made loss?"
-              });
-            } else {
-              db.none('INSERT INTO transaction(id, wallet_id, date, amount, profitorloss) VALUES(${id}, ${wallet_id}, ${date}, ${amount}, ${profitorloss})',{
-                id: uuid,
-                wallet_id: walletid,
-                date: dateToday,
-                amount: oldBalance - balance,
-                profitorloss: false
+              return res.status(400).json({
+                status:'error', 
+                message: "Are you sure you made Loss?"
               })
+            } else {
+              total = oldBalance - balance
             }
           }
+
+          db.none('INSERT INTO transaction(id, wallet_id, date, amount, profitorloss) VALUES(${id}, ${wallet_id}, ${date}, ${amount}, ${profitorloss})',{
+            id: uuid,
+            wallet_id: walletid,
+            date: dateToday,
+            amount: total,
+            profitorloss: profitOrLoss
+          })
 
           db.none('UPDATE wallet SET balance = ${balance} WHERE id = ${id}', {
             id: id,
