@@ -6,10 +6,11 @@ import HeadWebsite from 'components/global/head'
 import Navbar from 'components/global/navbar'
 import Footer from 'components/global/footer'
 
-import { useEffect } from 'react'
+import { useEffect, useContext } from 'react'
 import { useSession, signIn } from 'next-auth/client'
 
 import { useRouter } from 'next/router'
+import { DashboardContext } from 'components/context/context'
 
 export default function Home() {
 

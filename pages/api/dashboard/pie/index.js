@@ -22,15 +22,30 @@ export default async function handler(req, res) {
       // Check if there is anything in variable
       if (transaction) {
 
-        const filterLost = transaction.filter(index => index.profitorloss == false)
+        // profitorloss : true = loss / false = profit
 
-        const filterAmount = filterLost.map((index) => ({amount: index.amount}))
+        // Calculate all loss
+        const filterLost = transaction.filter(index => index.profitorloss == true)
+        const filterAmountLost = filterLost.map((index) => ({amount: index.amount}))
+        const sumAllLost = filterAmountLost.map(index => index.amount).reduce((prev, curr) => prev + curr)
 
-        const sumAll = filterAmount.map(index => index.amount).reduce((prev, curr) => prev + curr, 0)
+        // Calculate all loss
+        const filterProfit = transaction.filter(index => index.profitorloss == false)
+        const filterAmountProfit = filterProfit.map((index) => ({amount: index.amount}))
+        const sumAllProfit = filterAmountProfit.map(index => index.amount).reduce((prev, curr) => prev + curr)
 
-        console.log(sumAll);
-
-        return res.status(200).json(filterAmount)
+        return res.status(200).json([
+          {
+            "id": "profit",
+            "label": "profit",
+            "value": sumAllProfit,
+          },
+          {
+            "id": "loss",
+            "label": "loss",
+            "value": sumAllLost,
+          }
+        ])
 
       } else {
         return res.status(400)
