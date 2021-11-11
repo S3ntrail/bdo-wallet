@@ -56,7 +56,7 @@ const Transaction = () => {
   return (
     <div className="justify-center">
 
-      <div className="flex flex-wrap items-center m-16 mt-4 mb-20 p-10 bg-gray-850 rounded-xl">
+      <div className="flex flex-wrap items-center m-8 mt-4 mb-20 p-10 bg-gray-850 rounded-xl">
 
         <div>
 
@@ -122,12 +122,6 @@ const Transaction = () => {
             </button>
 
           </form>
-
-          {/* <div className="">
-            <ul>
-              <li>Test</li>
-            </ul>
-          </div> */}
 
         </div>
         

@@ -42,7 +42,7 @@ export default function Home() {
             />
           </section>
 
-          <section className="flex bg-black w-full">
+          <section className="flex bg-black w-full h-screen">
             <div className="inline-block">
               <PieChart />
             </div>
