@@ -34,18 +34,12 @@ export default async function handler(req, res) {
         const filterAmountProfit = filterProfit.map((index) => ({amount: index.amount}))
         const sumAllProfit = filterAmountProfit.map(index => index.amount).reduce((prev, curr) => prev + curr)
 
-        return res.status(200).json([
-          {
-            "id": "profit",
-            "label": "profit",
-            "value": sumAllProfit,
-          },
-          {
-            "id": "loss",
-            "label": "loss",
-            "value": sumAllLost,
-          }
-        ])
+        const data = [
+          sumAllProfit,
+          sumAllLost
+        ]
+
+        return res.status(200).json({data})
 
       } else {
         return res.status(400)

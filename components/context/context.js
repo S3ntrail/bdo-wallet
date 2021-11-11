@@ -19,9 +19,7 @@ const DashboardProvider = ({children}) => {
     fetch('http://localhost:3000/api/dashboard/pie')
       .then( async (res) => {
         const parsed = await res.json()
-
-        console.log(parsed);
-        return parsed
+        return parsed.data
       })
   )
 
