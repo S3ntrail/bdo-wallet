@@ -3,56 +3,45 @@ import React from "react";
 import { useContext } from "react";
 import { DashboardContext } from "components/context/context";
 
-import { Pie } from 'react-chartjs-2'
+import { Line } from "react-chartjs-2";
 
-const PieChart = () => {
-  const { pieData } = useContext(DashboardContext);
+const Chart = () => {
+  const { chartData } = useContext(DashboardContext);
+
+  const chartDate = chartData.map(x => x.date)
+  const chartAmount = chartData.map(x => x.amount)
 
   const data = {
-    labels: [
-      'Profit',
-      'Loss'
+    labels: chartDate, // date
+    datasets: [
+      {
+        label: "Profit or loss",
+        data: chartAmount, // amounts
+        fill: false,
+        backgroundColor: "rgb(255, 99, 132)",
+        borderColor: "rgba(255, 99, 132, 0.2)",
+      },
     ],
-    datasets: [{
-      label: '# of Votes',
-      data: pieData,
-      backgroundColor: [
-      '#FF6384',
-      '#36A2EB'
-      ],
-      hoverBackgroundColor: [
-      '#FF6384',
-      '#36A2EB'
-      ],
-      borderWidth: 1,
-    }]
   };
 
   const options = {
-    maintainAspectRatio: true,
-    responsive: true,
-    legend: {
-      position: 'left',
-      labels: {
-        boxWidth: 10
-      }
-    }
-  }
+    scales: {
+      y: {
+        beginAtZero: true,
+      },
+    },
+  };
 
   return (
     <div className="justify-center">
       <div className="flex flex-wrap items-center m-16 mt-4 mb-20 p-10 bg-gray-850 rounded-xl">
-        <div className="flex flex-col">
+        <div className="flex flex-wrap">
           <h2 className="mb-6 text-center">Net</h2>
-          <Pie
-            data={data}
-            options={options}
-          />
+          <Line data={data} options={options} />
         </div>
       </div>
     </div>
-  )
-  
+  );
 };
 
-export default PieChart;
+export default Chart;

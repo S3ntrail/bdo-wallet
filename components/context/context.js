@@ -15,11 +15,12 @@ const DashboardProvider = ({children}) => {
       })
   )
 
-  const { data: pieData, refetch: refetchpieData } = useQuery('pieData', () => 
-    fetch('http://localhost:3000/api/dashboard/pie')
+  const { data: chartData, refetch: refetchchartData } = useQuery('pieData', () => 
+    fetch('http://localhost:3000/api/dashboard/chart')
       .then( async (res) => {
         const parsed = await res.json()
-        return parsed.data
+
+        return parsed
       })
   )
 
@@ -27,7 +28,7 @@ const DashboardProvider = ({children}) => {
     <DashboardContext.Provider
       value={{
         balance,
-        pieData
+        chartData
       }}
     >
 

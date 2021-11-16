@@ -1,5 +1,5 @@
 import Balance from 'components/dashboard/balance'
-import PieChart from 'components/dashboard/chart'
+import Chart from 'components/dashboard/chart'
 import Transaction from 'components/form/transaction'
 
 import HeadWebsite from 'components/global/head'
@@ -37,18 +37,9 @@ export default function Home() {
             <Navbar />
           </div>
 
-          <section>
-            <Balance 
-            />
-          </section>
-
-          <section className="flex bg-black w-full h-screen">
-            <div className="inline-block">
-              <PieChart />
-            </div>
-
-            <div className="inline-block">
-              <Transaction />
+          <section className="flex flex-col bg-black w-full h-screen">
+            <div>
+              <Chart />
             </div>
 
           </section>

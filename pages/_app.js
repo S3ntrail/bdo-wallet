@@ -1,4 +1,4 @@
-import '../styles/globals.css'
+import '../styles/styles.css'
 import Layout from '../components/global/layout'
 import { DashboardProvider } from 'components/context/context'
 
