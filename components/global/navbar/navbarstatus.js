@@ -2,6 +2,7 @@ import { signIn, signOut, useSession } from "next-auth/client";
 
 import SignInButton from "components/button/Login/login";
 import RegisterButton from "components/button/Register/register";
+import ModalTransaction from "components/modal/modalTransaction";
 
 import { useContext } from "react";
 import { DashboardContext } from "components/context/context";
@@ -18,6 +19,10 @@ const NavbarStatus = () => {
   if (session) {
     return (
       <div className="flex">
+        <div className="mr-8 border-b-2 border-white rounded">
+          <ModalTransaction />
+        </div>
+
         <div className="mr-8 border-b-2 border-white rounded p-1">
           <h2>
             <FontAwesomeIcon 
