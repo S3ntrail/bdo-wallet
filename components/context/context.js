@@ -28,7 +28,9 @@ const DashboardProvider = ({children}) => {
     <DashboardContext.Provider
       value={{
         balance,
-        chartData
+        chartData,
+        refetchBalance,
+        refetchchartData
       }}
     >
 

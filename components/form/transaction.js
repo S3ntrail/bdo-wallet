@@ -1,5 +1,8 @@
 import {useState, useEffect} from 'react'
 
+import { DashboardContext } from 'components/context/context'
+import { useContext } from 'react'
+
 import Button from 'components/button/button'
 import Message from 'components/popup/message'
 
@@ -10,6 +13,7 @@ import Select from 'components/form/select/select'
 const Transaction = () => {
 
   const [result, setResult] = useState();
+  const {refetchBalance, refetchchartData} = useContext(DashboardContext)
 
   const createTransaction = async event => {
 
@@ -37,6 +41,11 @@ const Transaction = () => {
     })
 
     const result = await res.json()
+
+    if (result) {
+      refetchBalance()
+      refetchchartData()
+    }
 
     setResult(result)
   }

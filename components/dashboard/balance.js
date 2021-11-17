@@ -1,7 +1,6 @@
 import Card from 'components/card/card'
 
 import { useContext } from 'react'
-import React from 'react'
 
 import { DashboardContext } from 'components/context/context'
 

@@ -32,8 +32,6 @@ export default async function handler(req, res) {
   
       const dateToday = date.getDate() + "-" + (date.getMonth()+1) + "-" + date.getFullYear()
 
-      console.log(dateToday);
-
       const transaction = await retrieveBalance(id)
         .then( (data) => {
           const oldBalance = data.balance
