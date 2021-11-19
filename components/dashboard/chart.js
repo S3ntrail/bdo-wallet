@@ -1,4 +1,5 @@
 import React from "react";
+import * as dayjs from 'dayjs'
 
 import { useContext } from "react";
 import { DashboardContext } from "components/context/context";
@@ -8,7 +9,8 @@ import { Line } from "react-chartjs-2";
 const Chart = () => {
   const { chartData } = useContext(DashboardContext);
 
-  const chartDate = chartData.map(x => x.date)
+  const chartDate = chartData.map(x => dayjs(x.date).format('DD-MM-YYYY'))
+
   const chartAmount = chartData.map(x => x.amount)
 
   const data = {

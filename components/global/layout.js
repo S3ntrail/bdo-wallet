@@ -1,9 +1,6 @@
 import { useState, useEffect } from "react";
 import Router from 'next/router'
 
-import Image from 'next/image'
-import hqdefault from 'public/hqdefault.jpg'
-
 const Layout = props => {
   const [isLoading, setIsLoading] = useState(false);
 
@@ -21,7 +18,7 @@ const Layout = props => {
 
   return (
     <div>
-      { isLoading ? <Image src={hqdefault}></Image> : props.children }
+      { isLoading ? "Loading..." : props.children }
     </div>
   );
 }
