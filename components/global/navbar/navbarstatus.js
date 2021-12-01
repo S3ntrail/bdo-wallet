@@ -1,4 +1,5 @@
 import { signIn, signOut, useSession } from "next-auth/client";
+import { Popup } from "reactjs-popup";
 
 import SignInButton from "components/button/Login/login";
 import RegisterButton from "components/button/Register/register";
@@ -7,9 +8,7 @@ import ModalTransaction from "components/modal/modalTransaction";
 import { useContext } from "react";
 import { DashboardContext } from "components/context/context";
 
-import {
-  faWallet
-} from '@fortawesome/free-solid-svg-icons'
+import { faWallet } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const NavbarStatus = () => {
@@ -25,18 +24,41 @@ const NavbarStatus = () => {
 
         <div className="mr-8 border-b-2 border-white rounded p-1">
           <h2>
-            <FontAwesomeIcon 
-              icon={faWallet}
-            />
+            <FontAwesomeIcon icon={faWallet} />
             {balance}
           </h2>
         </div>
 
         <div>
-          <p>Signed in as {session.user.name}</p>
-          <a onClick={() => signOut()} className="cursor-pointer hover:text-red-600">
-            Sign out
-          </a>
+          <Popup
+            trigger={
+              <button type="button">
+                <h2>Account</h2>
+              </button>
+            }
+            closeOnDocumentClick
+            keepTooltipInside={true}
+            overlayStyle={{ position: "relative" }}
+            contentStyle={{ backgroundColor: "white", borderRadius: "20px" }}
+            arrow={true}
+          >
+            <div className="m-4">
+              <p
+                className="text-black text-lg"
+              >
+                Signed in as {session.user.name}
+              </p>
+            </div>
+
+            <div className="m-4">
+              <p
+                onClick={() => signOut()}
+                className="transition duration-500 ease-in-out text-black text-lg cursor-pointer"
+              >
+                Logout
+              </p>
+            </div>
+          </Popup>
         </div>
       </div>
     );
