@@ -1,6 +1,6 @@
-import React from "react";
 import * as dayjs from 'dayjs'
 
+import Loading from 'components/Loading/Loading'
 import { useContext } from "react";
 import { DashboardContext } from "components/context/context";
 
@@ -10,7 +10,6 @@ const Chart = () => {
   const { chartData } = useContext(DashboardContext);
 
   const chartDate = chartData.map(x => dayjs(x.date).format('DD-MM-YYYY'))
-
   const chartAmount = chartData.map(x => x.amount)
 
   const data = {
@@ -38,8 +37,20 @@ const Chart = () => {
     <div className="justify-center">
       <div className="flex flex-wrap items-center m-16 mt-4 mb-20 p-10 bg-gray-850 rounded-xl">
         <div className="flex flex-wrap">
-          <h2 className="mb-6 text-center">Net</h2>
-          <Line data={data} options={options} />
+          {chartDate && chartAmount
+            ? (
+              <>
+              <h2 className="mb-6 text-center">Net</h2>
+              <Line data={data} options={options} />
+            </>
+            ) 
+
+            : (
+              <Loading type='spin'/>
+            )
+            
+          }
+          
         </div>
       </div>
     </div>
