@@ -58,7 +58,7 @@ const Register = () => {
           </div>
 
           <div>
-            <Message message={result}/>
+            <Message message={result} delay="5000"/>
           </div>
 
           <form onSubmit={registerUser}>

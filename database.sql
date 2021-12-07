@@ -18,6 +18,7 @@ CREATE TABLE "transaction" (
   "profitorloss" boolean NOT NULL,
   "date" date NOT NULL,
   "amount" bigserial NOT NULL
+  "balance" bigserial NOT NULL
 );
 
 ALTER TABLE "wallet" ADD FOREIGN KEY ("id") REFERENCES "users" ("wallet_id");
