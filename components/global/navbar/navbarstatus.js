@@ -66,7 +66,7 @@ const NavbarStatus = () => {
 
   return (
     <div className="flex">
-      <div>
+      <div className="mr-6">
         <a onClick={() => signIn()} className="cursor-pointer m-2">
           <SignInButton title="Login" />
         </a>

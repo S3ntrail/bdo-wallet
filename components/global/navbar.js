@@ -14,7 +14,7 @@ const Navbar = () => {
           </a>
         </div>
 
-        <div className="w-full md:w-auto md:flex-grow md:flex md:items-center md:mt-10">
+        <div className="w-full md:w-auto md:flex-grow md:flex md:items-center lg:mt-0 md:mt-10">
 
           <ul className="flex flex-col mt-4 -mx-4 pt-4 md:flex-row md:items-center md:mx-0 md:mt-0 md:pt-0 md:mr-4 lg:mr-8 md:border-0">
 

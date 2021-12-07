@@ -1,8 +1,6 @@
 import Register from "components/form/register";
 
 import HeadWebsite from "components/global/head";
-import Navbar from "components/global/navbar";
-import Footer from "components/global/footer";
 
 import { useEffect } from "react";
 import { useSession, signIn } from "next-auth/client";
