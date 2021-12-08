@@ -5,7 +5,7 @@ import NavbarStatus from './navbar/navbarstatus'
 const Navbar = () => {
   return (
 
-    <nav className="bg-gray-850 w-min-screen z-10">
+    <nav className="bg-gray-850 w-min-screen">
       <div className="container mx-auto p-4 flex flex-wrap items-center justify-center">
         
         <div className="mr-4 md:mr-8 md:mt-2">

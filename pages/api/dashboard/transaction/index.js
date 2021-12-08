@@ -1,4 +1,5 @@
 import { getSession } from 'next-auth/client'
+import * as dayjs from dayjs
 
 import db from '../../../../lib/db'
 
@@ -27,10 +28,8 @@ export default async function handler(req, res) {
           id: id
         })
       }
-
-      const date = new Date()
   
-      const dateToday = date.getDate() + "-" + (date.getMonth()+1) + "-" + date.getFullYear()
+      const dateToday = dayjs().format("DD-MM-YYYY")
 
       const transaction = await retrieveBalance(id)
         .then( (data) => {
@@ -57,12 +56,13 @@ export default async function handler(req, res) {
             }
           }
 
-          db.none('INSERT INTO transaction(id, wallet_id, date, amount, profitorloss) VALUES(${id}, ${wallet_id}, ${date}, ${amount}, ${profitorloss})',{
+          db.none('INSERT INTO transaction(id, wallet_id, date, amount, profitorloss, balance) VALUES(${id}, ${wallet_id}, ${date}, ${amount}, ${profitorloss}, ${balance})',{
             id: uuid,
             wallet_id: walletid,
             date: dateToday,
             amount: total,
-            profitorloss: profitOrLoss
+            profitorloss: profitOrLoss,
+            balance: balance
           })
 
           db.none('UPDATE wallet SET balance = ${balance} WHERE id = ${id}', {
@@ -77,7 +77,7 @@ export default async function handler(req, res) {
 
         })
         .catch( error => {
-          console.log('uwu no database for you ' + error);
+          console.log('No database available' + error);
         })
 
     } else {

@@ -29,7 +29,7 @@ export default async function handler(req, res) {
           return data
         })
         .catch( error => {
-          console.log('uwu no database for you ' + error);
+          console.log('No database available ' + error);
         })
 
         if (balance) {

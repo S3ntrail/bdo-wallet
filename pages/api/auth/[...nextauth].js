@@ -53,7 +53,7 @@ export default NextAuth({
 
           })
           .catch( error => {
-            console.log('uwu no database for you ' + error);
+            console.log('No database available ' + error);
           })
 
         if (user) {
