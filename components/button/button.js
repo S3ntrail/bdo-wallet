@@ -1,7 +1,7 @@
 const Button = props => {
 
   return(
-    <div className="bg-indigo-400 cursor-pointer m-auto p-4 w-48 rounded-full">
+    <div className="inline-flex text-white bg-indigo-400 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-500 rounded-full text-lg">
 
       <h4 className="font-medium">{props.title}</h4>
 

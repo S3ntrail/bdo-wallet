@@ -1,11 +1,7 @@
 const RegisterButton = props => {
 
   return(
-    <div className="
-      transition duration-500 bg-yellow-450 p-4 pl-8 pr-8 cursor-pointer rounded-full
-      hover:bg-yellow-600
-      md:p-4 pl-4 pr-4"
-    >
+    <div className="inline-flex transition ease-in-out duration-500 text-white bg-yellow-450 border-0 py-2 px-6 focus:outline-none hover:bg-yellow-600 rounded text-lg">
 
       <h5 className="font-medium">{props.title}</h5>
 

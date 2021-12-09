@@ -17,7 +17,7 @@ const NavbarStatus = () => {
 
   if (session) {
     return (
-      <div className="flex">
+      <div className="flex place-items-center">
         <div className="mr-8 border-b-2 border-white rounded">
           <ModalTransaction />
         </div>
@@ -65,7 +65,7 @@ const NavbarStatus = () => {
   }
 
   return (
-    <div className="flex">
+    <div className="flex place-items-center">
       <div className="mr-6">
         <a onClick={() => signIn()} className="cursor-pointer m-2">
           <SignInButton title="Login" />

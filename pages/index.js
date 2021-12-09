@@ -1,8 +1,8 @@
 import HeadWebsite from "components/global/head";
 
-import Image from 'next/image'
+import Image from "next/image";
 
-import RegisterButton from 'components/button/Register/register'
+import RegisterButton from "components/button/Register/register";
 
 // export const getServerSideProps = async() => {
 
@@ -26,34 +26,42 @@ import RegisterButton from 'components/button/Register/register'
 export default function Home() {
   return (
     <>
-      <HeadWebsite />
+      <HeadWebsite 
+        title="BDO & You"
+        description="Keeping track of your balance by using our unique dashboard and usability to the market place"
+      />
 
       <div className="flex flex-col items-center justify-center">
         <main className="flex flex-col justify-center w-full flex-1 text-center bg-gray-750">
-          <section>
-            <div className="h-screen flex gap-2 justify-center flex-wrap">
-              <div className="w-1/2 text-left relative md:hidden lg:block mb-24">
-                <Image src="/financial.svg" layout="fill" objectFit="fill" />
+          <section className="text-gray-200 bg-gray-750 h-screen">
+            <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
+              <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 md:mb-0 mb-10">
+                <Image 
+                  src="/calculator.svg"
+                  layout="responsive"
+                  width={2400}
+                  height={1500}
+                />
               </div>
-
-              <div className="mt-24 w-1/4">
-                <h2 className="font-semibold text-left">BDO & You</h2>
-
-                <h3 className="mt-4 text-left">
-                  Tracking the Black Desert Online market and keeping track of
-                  your personal growth
-                </h3>
-
-                <div className="mt-6 w-2/4">
-                  <RegisterButton title="Start here" />
+              <div className="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
+                <h1 className="sm:text-4xl text-3xl mb-4 text-white">
+                  BDO & YOU
+                </h1>
+                <p className="mb-8 leading-relaxed">
+                  Tracking your income and outcome of your Black Desert Online journey.
+                  {' '}
+                  Make use of our handy dashboard and visualize your income and outcome. Keep track of your transactions and edit or delete them if needed.
+                  {' '}
+                </p>
+                <div className="flex justify-center">
+                  <button className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+                    Button
+                  </button>
                 </div>
               </div>
             </div>
           </section>
 
-          {/* <section className="h-screen flex">
-            <Cause />
-          </section>*/}
         </main>
       </div>
     </>
