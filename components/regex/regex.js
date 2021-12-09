@@ -1,7 +1,5 @@
 const Regex = (type, input) => {
 
-  console.log(type, input);
-
   let status = '' // This will be returned to the backend component
   let regex = '' // This will be used for the switch case to put in the regex
 
