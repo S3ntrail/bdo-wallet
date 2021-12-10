@@ -1,7 +1,7 @@
 import { getSession } from 'next-auth/client'
-import * as dayjs from dayjs
 
 import db from '../../../../lib/db'
+import dayjs from 'dayjs'
 
 import { v4 as uuidv4 } from 'uuid'
 

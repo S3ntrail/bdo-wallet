@@ -1,5 +1,5 @@
 import db from '../../../lib/db'
-import * as dayjs from dayjs
+import dayjs from 'dayjs'
 
 import Regex from 'components/regex/regex'
 
