@@ -35,7 +35,7 @@ const Chart = () => {
   };
 
   return (
-    <div className="items-center m-8 mt-8 mb-8 p-10 bg-gray-850 rounded-xl w-1/2">
+    <div className="items-center m-8 mt-8 mb-8 p-10 bg-gray-850 rounded-xl">
       <div className="flex flex-wrap">
         {data && options ? (
           <>

@@ -14,7 +14,7 @@ export default function Home() {
   if (session) {
     useEffect(() => {
       setTimeout(() => {
-        router.push("/");
+        router.push("/dashboard");
       }, 0);
     }, []);
   }

@@ -23,10 +23,10 @@ const NavbarStatus = () => {
         </div>
 
         <div className="mr-8 border-b-2 border-white rounded p-1">
-          <h2>
+          <h3>
             <FontAwesomeIcon icon={faWallet} />
             {balance}
-          </h2>
+          </h3>
         </div>
 
         <div>
