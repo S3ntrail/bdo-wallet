@@ -3,7 +3,7 @@ import {useState, useEffect} from 'react'
 import { DashboardContext } from 'components/context/context'
 import { useContext } from 'react'
 
-import Button from 'components/button/button'
+import { Button } from 'components/button/button'
 import Message from 'components/popup/message'
 
 import Input from 'components/form/input/input'

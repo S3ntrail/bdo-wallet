@@ -34,7 +34,7 @@ const TransactionTable = () => {
             <tbody className="text-sm divide-y divide-gray-100">
               {chartData && chartData.length > 0 ? (
                 chartData.map((trans) => (
-                  <tr>
+                  <tr key={trans.id}>
                     <td className="p-2 whitespace-nowrap">
                       <div className="text-left">
                         {dayjs(trans.date).format("DD/MM/YYYY")}
@@ -59,7 +59,7 @@ const TransactionTable = () => {
                       )}
                     </td>
                     <td className="p-2 whitespace-nowrap">
-                      <div className="text-lg text-center"><Menu /></div>
+                      <div className="text-lg text-center"><Menu id={trans.id}/></div>
                     </td>
                   </tr>
                 ))

@@ -12,11 +12,11 @@ const Chart = () => {
   const chartDate = chartData ? (chartData.map((x) => dayjs(x.date).format("DD-MM-YYYY"))) : dayjs().format("DD-MM-YYYY")
   
   const data = {
-    labels: chartDate, // date
+    labels: chartDate.reverse(), // date
     datasets: [
       {
         label: "Profit or loss",
-        data: chartAmount, // amounts
+        data: chartAmount.reverse(), // amounts
         fill: false,
         backgroundColor: "rgb(255, 99, 132)",
         borderColor: "rgba(255, 99, 132, 0.2)",
@@ -35,7 +35,7 @@ const Chart = () => {
   };
 
   return (
-    <div className="items-center m-8 mt-8 mb-8 p-10 bg-gray-850 rounded-xl">
+    <div className="m-8 mt-8 mb-8 p-10 bg-gray-850 rounded-xl">
       <div className="flex flex-wrap">
         {data && options ? (
           <>

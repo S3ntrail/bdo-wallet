@@ -1,3 +1,5 @@
+import dayjs from "dayjs"
+
 const Footer = () => {
   return(
     <footer>
@@ -13,7 +15,7 @@ const Footer = () => {
           </ul> */}
 
           <div className="text-white text-center">
-            BDO & You © 2021
+            BDO & You © {dayjs().format("YYYY")}
           </div>
 
         </div>
