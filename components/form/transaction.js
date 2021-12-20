@@ -13,7 +13,7 @@ import Select from 'components/form/select/select'
 const Transaction = () => {
 
   const [result, setResult] = useState();
-  const {refetchBalance, refetchchartData} = useContext(DashboardContext)
+  const { refetchDashboard } = useContext(DashboardContext)
 
   const createTransaction = async event => {
 
@@ -43,8 +43,7 @@ const Transaction = () => {
     const result = await res.json()
 
     if (result) {
-      refetchBalance()
-      refetchchartData()
+      refetchDashboard()
     }
 
     setResult(result)

@@ -8,9 +8,9 @@ import { Line } from "react-chartjs-2";
 const Chart = () => {
   const { chartData } = useContext(DashboardContext);
 
-  const chartAmount = chartData ? (chartData.reverse().map((x) => x.balance)) : 0 
-  const chartDate = chartData ? (chartData.reverse().map((x) => dayjs(x.date).format("DD-MM-YYYY"))) : dayjs().format("DD-MM-YYYY")
-  
+  const chartAmount = chartData ? (chartData.map((x) => x.balance)) : 0 
+  const chartDate = chartData ? (chartData.map((x) => dayjs(x.date).format("DD-MM-YYYY"))) : dayjs().format("DD-MM-YYYY")
+
   const data = {
     labels: chartDate, // date
     datasets: [

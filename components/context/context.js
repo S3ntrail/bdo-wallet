@@ -5,6 +5,12 @@ import { useQuery } from 'react-query'
 const DashboardContext = createContext()
 
 const DashboardProvider = ({children}) => {
+
+  const refetchDashboard = () => {
+    refetchBalance(),
+    refetchchartData(),
+    refetchTransaction()
+  }
   
   const { data: balance, refetch: refetchBalance } = useQuery('balance', () => 
     fetch('http://localhost:3000/api/dashboard/balance')
@@ -24,13 +30,22 @@ const DashboardProvider = ({children}) => {
       })
   )
 
+  const { data: transactions, refetch: refetchTransaction } = useQuery('transactions', () => 
+    fetch('http://localhost:3000/api/dashboard/transaction/tablerow')
+      .then( async (res) => {
+        const parsed = await res.json()
+
+        return parsed
+      })
+  )
+
   return (
     <DashboardContext.Provider
       value={{
         balance,
         chartData,
-        refetchBalance,
-        refetchchartData
+        transactions,
+        refetchDashboard
       }}
     >
 

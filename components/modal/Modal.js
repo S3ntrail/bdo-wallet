@@ -5,7 +5,7 @@ import { useContext } from 'react'
 
 const Delete_Modal = (props) => {
 
-  const {refetchBalance, refetchchartData} = useContext(DashboardContext)
+  const { refetchDashboard } = useContext(DashboardContext)
   const id = props.id;
 
   const deleteTransaction = async () => {
@@ -20,9 +20,11 @@ const Delete_Modal = (props) => {
     });
 
     const result = await res.json();
-    
-    refetchBalance()
-    refetchchartData()
+
+    if(result) {
+      refetchDashboard()
+      close
+    }
 
     // TODO add in way to show user that it actually has been deleted.
   };
@@ -33,7 +35,6 @@ const Delete_Modal = (props) => {
       modal
       nested
       position={"center center"}
-      closeOnDocumentClick
     >
       {(close) => (
         <div className="bg-gray-300 p-8 rounded items-center">

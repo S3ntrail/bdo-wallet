@@ -15,7 +15,7 @@ export default async function handler(req, res) {
 
       const wallet_id = session.user.wallet_id;
 
-      const transaction = await db.any('SELECT id, balance, date, profitorloss, amount FROM transaction WHERE wallet_id = ${wallet_id} ORDER BY date DESC LIMIT 30 ', {
+      const transaction = await db.any('SELECT id, balance, date, profitorloss, amount FROM transaction WHERE wallet_id = ${wallet_id} ORDER BY date ASC LIMIT 30 ', {
         wallet_id
       })
 

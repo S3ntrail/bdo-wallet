@@ -29,7 +29,7 @@ export default async function handler(req, res) {
         })
       }
   
-      const dateToday = dayjs().format("DD-MM-YYYY")
+      const dateToday = dayjs().format("DD-MM-YYYY:HH:mm:ss")
 
       const transaction = await retrieveBalance(id)
         .then( (data) => {

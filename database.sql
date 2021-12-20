@@ -9,16 +9,16 @@ CREATE TABLE "users" (
 
 CREATE TABLE "wallet" (
   "id" uuid PRIMARY KEY NOT NULL,
-  "balance" bigserial NOT NULL
+  "balance" numeric NOT NULL
 );
 
 CREATE TABLE "transaction" (
   "id" uuid PRIMARY KEY NOT NULL,
   "wallet_id" uuid NOT NULL,
   "profitorloss" boolean NOT NULL,
-  "date" date NOT NULL,
-  "amount" bigserial NOT NULL
-  "balance" bigserial NOT NULL
+  "date" timestamp NOT NULL,
+  "amount" numeric NOT NULL
+  "balance" numeric NOT NULL
 );
 
 ALTER TABLE "wallet" ADD FOREIGN KEY ("id") REFERENCES "users" ("wallet_id");

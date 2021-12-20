@@ -23,7 +23,7 @@ export default async function (req, res) {
       db.one('SELECT amount, profitorloss FROM transaction WHERE id = ${id}', {
         id
       }).then(data => {
-        const amount = data.amount
+        const amount = Number(data.amount)
         const net = data.profitorloss
 
         db.one('SELECT balance from wallet WHERE id = ${wallet_id}', {

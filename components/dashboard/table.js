@@ -5,7 +5,7 @@ import Menu from "components/Menu/Menu"
 import dayjs from "dayjs";
 
 const TransactionTable = () => {
-  const { chartData } = useContext(DashboardContext);
+  const { transactions } = useContext(DashboardContext);
 
   return (
     <div className="w-full bg-gray-850 mx-auto mt-2 bg-gray-850 rounded-xl">
@@ -27,17 +27,20 @@ const TransactionTable = () => {
                   <div className="font-semibold text-left">Amount</div>
                 </th>
                 <th className="p-2 whitespace-nowrap">
+                  <div className="font-semibold text-left">Balance after</div>
+                </th>
+                <th className="p-2 whitespace-nowrap">
                   <div className="font-semibold text-center">Actions</div>
                 </th>
               </tr>
             </thead>
             <tbody className="text-sm divide-y divide-gray-100">
-              {chartData && chartData.length > 0 ? (
-                chartData.map((trans) => (
+              {transactions && transactions.length > 0 ? (
+                transactions.map((trans) => (
                   <tr key={trans.id}>
                     <td className="p-2 whitespace-nowrap">
                       <div className="text-left">
-                        {dayjs(trans.date).format("DD/MM/YYYY")}
+                        {dayjs(trans.date).format("DD/MM/YYYY HH:mm")}
                       </div>
                     </td>
                     <td className="p-2 whitespace-nowrap">
@@ -59,12 +62,20 @@ const TransactionTable = () => {
                       )}
                     </td>
                     <td className="p-2 whitespace-nowrap">
+                      <div className="text-left">
+                        {trans.balance}
+                      </div>
+                    </td>
+                    <td className="p-2 whitespace-nowrap">
                       <div className="text-lg text-center"><Menu id={trans.id}/></div>
                     </td>
                   </tr>
                 ))
               ) : (
                 <tr>
+                  <td className="p-2 whitespace-nowrap">
+                    <div className="text-left">Loading...</div>
+                  </td>
                   <td className="p-2 whitespace-nowrap">
                     <div className="text-left">Loading...</div>
                   </td>
