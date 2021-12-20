@@ -1,12 +1,14 @@
 import Popup from "reactjs-popup";
 import { Delete_Button, Cancel_Button } from "components/button/button";
+import { DashboardContext } from 'components/context/context'
+import { useContext } from 'react'
 
 const Delete_Modal = (props) => {
 
+  const {refetchBalance, refetchchartData} = useContext(DashboardContext)
   const id = props.id;
 
   const deleteTransaction = async () => {
-    console.log("It has been called");
     const res = await fetch("/api/dashboard/transaction/delete", {
       body: JSON.stringify({
         id,
@@ -18,6 +20,9 @@ const Delete_Modal = (props) => {
     });
 
     const result = await res.json();
+    
+    refetchBalance()
+    refetchchartData()
 
     // TODO add in way to show user that it actually has been deleted.
   };

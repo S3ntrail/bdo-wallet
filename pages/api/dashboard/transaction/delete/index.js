@@ -10,6 +10,7 @@ export default async function (req, res) {
         return res.status(401);
       }
 
+      const wallet_id = session.user.wallet_id;
       const id = req.body.id;
 
       if (id == null && id == undefined) {
@@ -19,9 +20,41 @@ export default async function (req, res) {
         });
       }
 
-      // TODO when deleting calculate the balance if the transaction has been deleted
+      db.one('SELECT amount, profitorloss FROM transaction WHERE id = ${id}', {
+        id
+      }).then(data => {
+        const amount = data.amount
+        const net = data.profitorloss
 
-      db.result(
+        db.one('SELECT balance from wallet WHERE id = ${wallet_id}', {
+          wallet_id: wallet_id
+        }).then(data => {
+          const balance = Number(data.balance)
+          let result = 0
+
+          if (net === true) {
+            result = balance + amount
+            db.none('UPDATE wallet SET balance = ${balance} WHERE id = ${wallet_id}', {
+              wallet_id: wallet_id,
+              balance: result
+            })
+          } else {
+            result = balance - amount
+            db.none('UPDATE wallet SET balance = ${balance} WHERE id = ${wallet_id}', {
+              wallet_id: wallet_id,
+              balance: result
+            })
+          }
+
+        }).catch(error => {
+          console.log(error);
+        }) 
+
+      }).catch(error => {
+        console.log(error);
+      })
+
+      await db.result(
         "DELETE FROM transaction WHERE id = ${id}",
         {
           id,

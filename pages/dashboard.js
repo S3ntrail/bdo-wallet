@@ -29,12 +29,12 @@ export default function Home() {
 
       <div className="flex flex-col items-center justify-center">
         <main className="flex flex-col justify-center text-center w-full">
-          <section class="text-gray-400 bg-gray-750 body-font">
-            <div class="container px-2 py-12 mx-auto">
-              <div class="flex flex-col text-center w-full mb-12">
+          <section className="text-gray-400 bg-gray-750 body-font">
+            <div className="container px-2 py-12 mx-auto">
+              <div className="flex flex-col text-center w-full mb-12">
                 <Chart />
               </div>
-              <div class="flex flex-col text-center w-full mb-12">
+              <div className="flex flex-col text-center w-full mb-12">
                 <TransactionTable />
               </div>
             </div>

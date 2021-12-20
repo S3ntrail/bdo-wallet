@@ -8,15 +8,15 @@ import { Line } from "react-chartjs-2";
 const Chart = () => {
   const { chartData } = useContext(DashboardContext);
 
-  const chartAmount = chartData ? (chartData.map((x) => x.balance)) : 0 
-  const chartDate = chartData ? (chartData.map((x) => dayjs(x.date).format("DD-MM-YYYY"))) : dayjs().format("DD-MM-YYYY")
+  const chartAmount = chartData ? (chartData.reverse().map((x) => x.balance)) : 0 
+  const chartDate = chartData ? (chartData.reverse().map((x) => dayjs(x.date).format("DD-MM-YYYY"))) : dayjs().format("DD-MM-YYYY")
   
   const data = {
-    labels: chartDate.reverse(), // date
+    labels: chartDate, // date
     datasets: [
       {
         label: "Profit or loss",
-        data: chartAmount.reverse(), // amounts
+        data: chartAmount, // amounts
         fill: false,
         backgroundColor: "rgb(255, 99, 132)",
         borderColor: "rgba(255, 99, 132, 0.2)",
@@ -26,7 +26,7 @@ const Chart = () => {
 
   const options = {
     responsive: true,
-    maintainAspectRatio: true,
+    maintainAspectRatio: false,
     scales: {
       y: {
         beginAtZero: true,
@@ -35,8 +35,8 @@ const Chart = () => {
   };
 
   return (
-    <div className="m-8 mt-8 mb-8 p-10 bg-gray-850 rounded-xl">
-      <div className="flex flex-wrap">
+    <div className="m-8 mt-8 mb-8 p-20 bg-gray-850 rounded-xl">
+      <div className="flex flex-wrap max-h-96">
         {data && options ? (
           <>
             <h2 className="mb-6 text-center">Net</h2>

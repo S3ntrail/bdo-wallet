@@ -8,7 +8,7 @@ const TransactionTable = () => {
   const { chartData } = useContext(DashboardContext);
 
   return (
-    <div className="w-full max-w-2xl mx-auto bg-gray-850 shadow-lg rounded-lg">
+    <div className="w-full bg-gray-850 mx-auto mt-2 bg-gray-850 rounded-xl">
       <header className="px-5 py-4 border-b border-gray-100">
         <h2 className="font-semibold text-gray-200">Transactions</h2>
       </header>
