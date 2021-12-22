@@ -1,6 +1,6 @@
 import { Popup } from "reactjs-popup";
 
-import { Delete_Modal } from "components/modal/Modal";
+import { Delete_Modal, Edit_Modal } from "components/modal/Modal";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisV } from "@fortawesome/free-solid-svg-icons";
@@ -33,7 +33,7 @@ const Menu = props => {
           <p
             className="text-black text-lg bg-white cursor-pointer"
           >
-            Edit
+            <Edit_Modal id={props.id}/>
           </p>
         </div>
       </Popup>

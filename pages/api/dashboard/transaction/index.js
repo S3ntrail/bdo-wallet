@@ -20,7 +20,7 @@ export default async function handler(req, res) {
       const uuid = uuidv4()
       const id = session.user.id
       const walletid = session.user.wallet_id
-      const balance = req.body.balance
+      const balance = Number(req.body.balance)
       const profitOrLoss = req.body.profitOrLoss
 
       function retrieveBalance(id) {
@@ -33,7 +33,7 @@ export default async function handler(req, res) {
 
       const transaction = await retrieveBalance(id)
         .then( (data) => {
-          const oldBalance = data.balance
+          const oldBalance = Number(data.balance)
           let total = 0
 
           if (profitOrLoss == 0) {
