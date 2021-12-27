@@ -3,7 +3,7 @@ import { Popup } from "reactjs-popup";
 
 import SignInButton from "components/button/Login/login";
 import RegisterButton from "components/button/Register/register";
-import ModalTransaction from "components/modal/modalTransaction";
+import { Add_Transaction } from "components/modal/Modal";
 
 import { useContext } from "react";
 import { DashboardContext } from "components/context/context";
@@ -19,12 +19,12 @@ const NavbarStatus = () => {
     return (
       <div className="flex place-items-center">
         <div className="mr-8 border-b-2 border-white rounded">
-          <ModalTransaction />
+          <Add_Transaction />
         </div>
 
         <div className="mr-8 border-b-2 border-white rounded p-1">
           <h3>
-            <FontAwesomeIcon icon={faWallet} />
+            <FontAwesomeIcon icon={faWallet} className=""/>
             {balance}
           </h3>
         </div>
@@ -33,7 +33,7 @@ const NavbarStatus = () => {
           <Popup
             trigger={
               <button type="button">
-                <h2>Account</h2>
+                <h3>Account</h3>
               </button>
             }
             closeOnDocumentClick

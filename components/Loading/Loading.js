@@ -1,14 +1,14 @@
-import ReactLoading from 'react-loading'
+import ReactLoading from "react-loading";
 
-const Loading = ({type}) => {
-
+const Loading = ({ type }) => {
   return (
-    <div>
-      <ReactLoading
-        type={type}
-      />
-    </div>
-  )
-}
+    <ReactLoading
+      type={type}
+      className="absolute"
+      height={"100%"}
+      width={"100%"}
+    />
+  );
+};
 
-export default Loading
+export default Loading;

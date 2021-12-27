@@ -43,7 +43,9 @@ const Chart = () => {
             <Line data={data} options={options}/>
           </>
         ) : (
-          <Loading type="spin" />
+          <div className="relative w-10 mx-auto">
+            <Loading type="spin" />
+          </div>
         )}
       </div>
     </div>
