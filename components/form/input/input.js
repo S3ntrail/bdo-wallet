@@ -1,6 +1,7 @@
 const Input = (props) => {
   return (
     <input
+      min={props.min}
       id={props.id}
       type={props.type}
       placeholder={props.placeholder}

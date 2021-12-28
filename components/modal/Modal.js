@@ -97,6 +97,7 @@ const Edit_Modal = (props) => {
 };
 
 const Add_Transaction = () => {
+  const { refetchDashboard } = useContext(DashboardContext);
   const [loading, isLoading] = useState(null);
   const [error, setError] = useState(null);
 
@@ -123,6 +124,7 @@ const Add_Transaction = () => {
     }
 
     isLoading(false);
+    refetchDashboard()
   };
 
   return (
@@ -145,6 +147,7 @@ const Add_Transaction = () => {
                   Add an transaction
                 </h3>
                 <Input
+                  min="0"
                   id="newBalance"
                   type="number"
                   placeholder="New Balance"
