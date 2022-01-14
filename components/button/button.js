@@ -56,4 +56,27 @@ const Cancel_Button = (props) => {
   );
 };
 
-export { Button, Delete_Button, Cancel_Button, Create_Button };
+const Register_Button = ({ type, onClick, loading, title }) => {
+  return (
+    <button
+      type={type}
+      onClick={onClick}
+      className="bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-700 rounded-full text-lg"
+    >
+      <div>
+        <div className="flex">
+          {loading ? (
+            <div className="relative h-10 w-10">
+              <Loading type="spin" />
+            </div>
+          ) : (
+            <div></div>
+          )}
+          <h4 className="flex items-center font-medium text-white">{title}</h4>
+        </div>
+      </div>
+    </button>
+  );
+};
+
+export { Button, Delete_Button, Cancel_Button, Create_Button, Register_Button };
