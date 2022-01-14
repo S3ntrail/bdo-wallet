@@ -1,15 +1,16 @@
-import Navbar from "components/global/navbar"
-import Footer from "components/global/footer"
+import Navbar from "@/components/global/navbar";
+import Footer from "@/components/global/footer";
+import HeadWebsite from "@/components/global/head";
 
 const Layout = ({ children }) => {
-
-  return(
-    <div>
+  return (
+    <>
+      <HeadWebsite />
       <Navbar />
-        {children}
+      {children}
       <Footer />
-    </div>
-  )
-}
+    </>
+  );
+};
 
-export default Layout
+export default Layout;

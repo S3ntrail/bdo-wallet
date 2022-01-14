@@ -2,7 +2,7 @@ import MarketOverview from "components/market/marketOverview";
 
 import HeadWebsite from "components/global/head";
 
-export default function Home() {
+const Marketpage = () => {
   return (
     <>
       <HeadWebsite />
@@ -17,3 +17,5 @@ export default function Home() {
     </>
   );
 }
+
+export default Marketpage

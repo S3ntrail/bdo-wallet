@@ -4,7 +4,7 @@ import { signin, signIn } from "next-auth/client";
 import Input from "components/form/input/input";
 import Label from "components/form/label/label";
 
-import { ErrorMessage, useFormik } from "formik";
+import { useFormik } from "formik";
 
 const Register = () => {
 

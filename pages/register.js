@@ -4,7 +4,7 @@ import { useSession } from "next-auth/client";
 import { useRouter } from "next/router";
 import Register from "components/form/register";
 
-export default function Home() {
+const Registerpage = () => {
   const [session] = useSession();
   const router = useRouter();
 
@@ -29,3 +29,5 @@ export default function Home() {
     </>
   );
 }
+
+export default Registerpage

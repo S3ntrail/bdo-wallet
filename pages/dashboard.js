@@ -4,21 +4,16 @@ import HeadWebsite from "components/global/head";
 
 import { useEffect, useContext } from "react";
 import { DashboardContext } from "components/context/context";
-import { useSession, signIn } from "next-auth/client";
+import { useSession, signIn, signin } from "next-auth/client";
 
 import { useRouter } from "next/router";
 
-export default function Home() {
+const Dashboardpage = () => {
   const {transactions} = useContext(DashboardContext)
-  const [session, loading] = useSession();
-  const router = useRouter();
+  const [session] = useSession();
 
-  if (!session) {
-    useEffect(() => {
-      setTimeout(() => {
-        router.push(signIn());
-      }, 0);
-    }, []);
+  if(!session) {
+    signin()
   }
 
   return (
@@ -111,3 +106,5 @@ export default function Home() {
     </>
   );
 };
+
+export default Dashboardpage

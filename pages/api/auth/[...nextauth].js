@@ -1,4 +1,4 @@
-import db from '../../../lib/db'
+import db from '@/lib/db'
 
 import bcrypt from 'bcrypt'
 
@@ -15,7 +15,7 @@ export default NextAuth({
         password: {label: "Password", type: "password", placeholder: "password123"}
       },
 
-      async authorize(credentials, req) {
+      async authorize(req) {
 
         const email = req.body.email.toLowerCase()
         const password = req.body.password

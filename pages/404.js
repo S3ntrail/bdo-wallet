@@ -4,7 +4,7 @@ import HeadWebsite from "components/global/head";
 
 import { useEffect } from "react";
 
-export default function Home() {
+const Errorpage = () => {
   const router = useRouter();
 
   useEffect(() => {
@@ -33,3 +33,5 @@ export default function Home() {
     </>
   );
 }
+
+export default Errorpage

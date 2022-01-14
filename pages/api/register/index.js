@@ -1,4 +1,4 @@
-import db from '../../../lib/db'
+import db from '@/lib/db'
 import dayjs from 'dayjs'
 
 import Regex from 'components/regex/regex'

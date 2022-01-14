@@ -4,26 +4,7 @@ import Image from "next/image";
 
 import RegisterButton from "components/button/Register/register";
 
-// export const getServerSideProps = async() => {
-
-//   const res = await fetch('/api/login', {
-
-//   })
-
-//   if(false) {
-//     return {
-//       props: {},
-//       redirect: {
-//         destination: "/dashboard"
-//       }
-//     }
-//   }
-//   return {
-//     props: {},
-//   }
-// }
-
-export default function Home() {
+const Homepage = () => {
   return (
     <>
       <HeadWebsite 
@@ -69,3 +50,5 @@ export default function Home() {
     </>
   );
 }
+
+export default Homepage

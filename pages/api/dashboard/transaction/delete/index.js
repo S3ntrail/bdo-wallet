@@ -1,4 +1,4 @@
-import db from "../../../../../lib/db";
+import db from '@/lib/db'
 import { getSession } from "next-auth/client";
 
 export default async function (req, res) {
