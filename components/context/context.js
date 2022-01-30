@@ -13,29 +13,38 @@ const DashboardProvider = ({children}) => {
   }
   
   const { data: balance, refetch: refetchBalance } = useQuery('balance', () => 
-    fetch('http://localhost:3000/api/dashboard/balance')
+    fetch('/api/dashboard/balance')
       .then( async (res) => {
         const parsed = await res.json()
 
         return parsed.balance
       })
+      .catch(err => {
+        console.log("Context component error : " + err);
+      })
   )
 
   const { data: chartData, refetch: refetchchartData } = useQuery('pieData', () => 
-    fetch('http://localhost:3000/api/dashboard/chart')
+    fetch('/api/dashboard/chart')
       .then( async (res) => {
         const parsed = await res.json()
 
         return parsed
       })
+      .catch(err => {
+        console.log("Context component error : " + err);
+      })
   )
 
   const { data: transactions, refetch: refetchTransaction } = useQuery('transactions', () => 
-    fetch('http://localhost:3000/api/dashboard/transaction/tablerow')
+    fetch('/api/dashboard/transaction/tablerow')
       .then( async (res) => {
         const parsed = await res.json()
 
         return parsed
+      })
+      .catch(err => {
+        console.log("Context component error : " + err);
       })
   )
 

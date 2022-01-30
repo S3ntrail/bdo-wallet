@@ -1,67 +1,75 @@
-import db from '@/lib/db'
+import db from "@/lib/db";
 
-import bcrypt from 'bcrypt'
+import bcrypt from "bcrypt";
 
-import NextAuth from "next-auth"
-import Providers from "next-auth/providers"
+import NextAuth from "next-auth";
+import Providers from "next-auth/providers";
 
 export default NextAuth({
-  providers : [
+  providers: [
     Providers.Credentials({
       name: "Credentials",
 
       credentials: {
-        email: {label: "Email", type: "email", placeholder: "youremail@email.com"},
-        password: {label: "Password", type: "password", placeholder: "password123"}
+        email: {
+          label: "Email",
+          type: "email",
+          placeholder: "youremail@email.com",
+        },
+        password: {
+          label: "Password",
+          type: "password",
+          placeholder: "password123",
+        },
       },
 
-      async authorize(req) {
+      async authorize(credentials, req) {
+        const email = req.body.email.toLowerCase();
+        const password = req.body.password;
 
-        const email = req.body.email.toLowerCase()
-        const password = req.body.password
-
-        if(!password || password == null || !email || email == null) {
-          return null
+        if (!password || password == null || !email || email == null) {
+          return null;
         }
 
         function existingUser(email) {
-          return db.oneOrNone('SELECT email, pass, id, wallet_id, username FROM users WHERE email = ${email} LIMIT 1',{
-            email 
-          })
+          return db.oneOrNone(
+            "SELECT email, pass, id, wallet_id, username FROM users WHERE email = ${email} LIMIT 1",
+            {
+              email,
+            }
+          );
         }
-      
-        const user = await existingUser(email)
-          .then( async (data) => {
-            const hash = data.pass
 
-            bcrypt.compare(password, hash, function(err, result) {
-              if (err) throw err
+        const user = await existingUser(email)
+          .then(async (data) => {
+            const hash = data.pass;
+
+            bcrypt.compare(password, hash, function (err, result) {
+              if (err) throw err;
 
               if (!result) {
-                return null
+                return null;
               }
-
-            })
+            });
 
             const user = {
               name: data.username,
               id: data.id,
-              wallet_id: data.wallet_id
-            }
+              wallet_id: data.wallet_id,
+            };
 
-            return user
-
+            return user;
           })
-          .catch( error => {
-            console.log('No database available ' + error);
-          })
+          .catch((error) => {
+            console.log("No database available " + error);
+          });
 
         if (user) {
-          return user
+          return user;
         } else {
-          return null
+          return null;
         }
-      }
+      },
     }),
   ],
   session: {
@@ -76,17 +84,16 @@ export default NextAuth({
       //  ...so we set "user" param of "token" to object from "authorize"...
       //  ...and return it...
       user && (token.user = user);
-      return Promise.resolve(token)   // ...here
+      return Promise.resolve(token); // ...here
     },
     session: async (session, user, sessionToken) => {
       //  "session" is current session object
       //  below we set "user" param of "session" to value received from "jwt" callback
       session.user = user.user;
-      return Promise.resolve(session)
-    }
-  }
+      return Promise.resolve(session);
+    },
+  },
   // pages: {
   //   signIn: '/login',
   // }
-})
-
+});

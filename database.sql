@@ -17,7 +17,7 @@ CREATE TABLE "transaction" (
   "wallet_id" uuid NOT NULL,
   "profitorloss" boolean NOT NULL,
   "date" timestamp NOT NULL,
-  "amount" numeric NOT NULL
+  "amount" numeric NOT NULL,
   "balance" numeric NOT NULL
 );
 

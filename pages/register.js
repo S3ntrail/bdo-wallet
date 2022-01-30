@@ -1,5 +1,4 @@
 import HeadWebsite from "components/global/head";
-import { useEffect, useState } from "react";
 import { useSession } from "next-auth/client";
 import { useRouter } from "next/router";
 import Register from "components/form/register";

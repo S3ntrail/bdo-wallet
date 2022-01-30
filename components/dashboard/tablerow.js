@@ -4,7 +4,8 @@ import dayjs from "dayjs";
 
 const TableRow = ({ data }) => {
 
-  const { id, date, profitOrLoss, balance, amount } = data
+  const { id, date, balance, amount } = data
+  const profitOrLoss = data.profitorloss
 
   return (
     <tr key={id}>
@@ -14,7 +15,7 @@ const TableRow = ({ data }) => {
         </div>
       </td>
       <td className="p-2 whitespace-nowrap">
-        {profitorloss === false ? (
+        {profitOrLoss === false ? (
           <div className="text-left text-green-500">Profit</div>
         ) : (
           <div className="text-left text-red-500">Loss</div>

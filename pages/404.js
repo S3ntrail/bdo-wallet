@@ -15,7 +15,10 @@ const Errorpage = () => {
 
   return (
     <>
-      <HeadWebsite />
+      <HeadWebsite
+        title="BDO & You - 404"
+        description="Keeping track of your balance by using our unique dashboard and usability to the market place"
+      />
 
       <div className="flex flex-col items-center justify-center">
         <main className="flex flex-col justify-center w-full flex-1 text-center">
